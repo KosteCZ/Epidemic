@@ -1,6 +1,7 @@
-package gui;
+package cz.koscak.jan.game.epidemic.gui;
 
-import model.Human;
+import cz.koscak.jan.game.epidemic.Game;
+import cz.koscak.jan.game.epidemic.model.Human;
 
 import java.awt.*;
 
@@ -9,11 +10,14 @@ import javax.swing.*;
 public class GamePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	
+
+	private final Game game;
+
 	//private static final int HEIGHT = 500;
 	//private static final int WIDTH = 500;
 
-	GamePanel() {
+	GamePanel(Game game) {
+		this.game = game;
 		//setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		//setBackground(Color.BLACK);
 
@@ -30,11 +34,14 @@ public class GamePanel extends JPanel {
 
 		super.paintComponent(g);
 
+		game.paint(g);
+
 		paintGame(g);
 
 	}
 
-	void paintGame(Graphics g) {
+	private void paintGame(Graphics g) {
+
 		//paintArena(g);
 
 		//g.setColor(Color.LIGHT_GRAY);
@@ -46,7 +53,7 @@ public class GamePanel extends JPanel {
 		g.drawString("Deaths: (0-100)", 400, 50);
 		g.drawRect(100, 100, 50, 50);
 		g.drawOval(100, 200, 50, 50);
-		g.drawRect(100, 700, 90, 90);
+		g.drawRect(100, 700, 80, 80);
 		g.drawRect(7, 35 + 25, 720, 720);
 
 		//TEST-delete it

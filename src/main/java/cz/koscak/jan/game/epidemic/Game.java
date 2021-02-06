@@ -1,10 +1,12 @@
-import model.Human;
+package cz.koscak.jan.game.epidemic;
+
+import cz.koscak.jan.game.epidemic.model.Human;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-class Game {
+public class Game {
 
     private List<Human> listOfHumans = new ArrayList<>();
 
@@ -21,7 +23,7 @@ class Game {
         // TODO: Play
     }
 
-    void paint(Graphics g) {
+    public void paint(Graphics g) {
         for (Human human: listOfHumans) {
             human.paint(g);
         }

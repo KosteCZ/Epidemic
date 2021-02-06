@@ -1,4 +1,4 @@
-package model;
+package cz.koscak.jan.game.epidemic.model;
 
 import java.awt.*;
 
