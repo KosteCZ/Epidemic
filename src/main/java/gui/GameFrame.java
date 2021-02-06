@@ -7,30 +7,31 @@ import javax.swing.*;
 public class GameFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	private static final String TITLE_EPIDEMIC = "Epidemic";
 
 	private GamePanel gamePanel;
 
-	public GameFrame(String name) {
+	public GameFrame() {
 		
-		super(name);
-		
+		super(TITLE_EPIDEMIC);
+
+		setResizable(false);
+
 		gamePanel = new GamePanel();
 
-		// set background of panel
-		gamePanel.setBackground(Color.LIGHT_GRAY);
-
 		// add panel to frame
-        add(gamePanel);
+		add(gamePanel);
+
+		pack();
+
+		// set background of panel
+		//gamePanel.setBackground(Color.LIGHT_GRAY);
 
 		// set the size of frame
 		setSize(800, 800);
 
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation(dim.width / 2 - getSize().width / 2, 0);
-
-		JButton buttonNew = new JButton("New");
-		buttonNew.setBounds(0, 1, 70, 30);
-		add(buttonNew);
 
 		setLayout(null);
 

@@ -4,32 +4,37 @@ import model.Human;
 
 import java.awt.*;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class GamePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
-	private static final int HEIGHT = 500;
-	private static final int WIDTH = 500;
+	//private static final int HEIGHT = 500;
+	//private static final int WIDTH = 500;
 
 	GamePanel() {
-		setPreferredSize(new Dimension(WIDTH, HEIGHT));
-		setBackground(Color.BLACK);
+		//setPreferredSize(new Dimension(WIDTH, HEIGHT));
+		//setBackground(Color.BLACK);
+
 		setDoubleBuffered(true);
-		setFocusable(true);
+		//setFocusable(true);
+		setLayout(null);
+
+		JButton buttonNew = new JButton("New");
+		buttonNew.setBounds(0, 1, 70, 30);
+		add(buttonNew);
 	}
 
 	public void paintComponent(Graphics g) {
 
 		super.paintComponent(g);
 
-		//paintGame(g);
+		paintGame(g);
 
 	}
 
 	void paintGame(Graphics g) {
-		//super.paint(g);
 		//paintArena(g);
 
 		//g.setColor(Color.LIGHT_GRAY);

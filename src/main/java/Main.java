@@ -6,7 +6,7 @@ import java.awt.*;
 public class Main {
 
     public static void main(String[] args) {
-        GameFrame gameFrame = new GameFrame("Epidemic");
+        GameFrame gameFrame = new GameFrame();
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         Game game = new Game();
@@ -21,10 +21,10 @@ public class Main {
         Runnable r1 = () -> {
             try {
                 while (true) {
-                    //gameFrame.repaint();
-                    gameFrame.paintGame(g);
+                    gameFrame.repaint();
+                    //gameFrame.paintGame(g);
                     game.play();
-                    game.paint(g);
+                    //game.paint(g);
 
                     //System.out.println("Hello, world!");
                     Thread.sleep(100);
