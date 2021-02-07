@@ -6,10 +6,12 @@ public class Human {
 
     private static final int UI_SIZE = 16;
     private double x, y;
+    private HumanState state;
 
     public Human(double x, double y) {
         this.x = x;
         this.y = y;
+        state = HumanState.HEALTHY;
     }
 
     public void setX(double x) {
@@ -29,18 +31,23 @@ public class Human {
     }
 
     private int getIntX() {
-        return (int) Math.round(x);
+        //return (int) Math.round(x);
+        return (int) Math.floor(x + 0.5d);
     }
 
     private int getIntY() {
-        return (int) Math.round(y);
+        //return (int) Math.round(y);
+        return (int) Math.floor(y + 0.5d);
+    }
+
+    public void setState(HumanState state) {
+        this.state = state;
     }
 
     public void paint(Graphics g) {
         //g.drawRect(getIntX(), getIntY(), UI_SIZE, UI_SIZE);
         // body
-        g.setColor(Color.YELLOW);
-        g.fillOval(getIntX(), getIntY(), UI_SIZE, UI_SIZE);
+        printBody(g);
         g.setColor(Color.RED);
         g.drawOval(getIntX(), getIntY(), UI_SIZE, UI_SIZE);
         // eyes
@@ -51,6 +58,25 @@ public class Human {
         // mouth
         g.setColor(Color.black);
         g.drawLine(getIntX() + 4, getIntY() + 11, getIntX() + 12, getIntY() + 11);
+        g.setColor(Color.black);
+        g.drawLine(getIntX() + 5, getIntY() + 12, getIntX() + 11, getIntY() + 12);
+        g.setColor(Color.black);
+        g.drawLine(getIntX() + 7, getIntY() + 13, getIntX() + 9, getIntY() + 13);
+    }
+
+    private void printBody(Graphics g) {
+        if (HumanState.HEALTHY.equals(state)) {
+            g.setColor(Color.YELLOW);
+        } else if (HumanState.INFECTED.equals(state)) {
+            g.setColor(Color.CYAN);
+        }if (HumanState.SICK.equals(state)) {
+            g.setColor(Color.GREEN);
+        }if (HumanState.IMMUNE.equals(state)) {
+            g.setColor(Color.ORANGE);
+        }if (HumanState.DEAD.equals(state)) {
+            g.setColor(Color.DARK_GRAY);
+        }
+        g.fillOval(getIntX(), getIntY(), UI_SIZE, UI_SIZE);
     }
 
 }
