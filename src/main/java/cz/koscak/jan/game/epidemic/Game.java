@@ -25,7 +25,9 @@ public class Game {
 
     void play() {
         for (Human human: listOfHumans) {
-            human.setX(human.getX() + 1);
+            if (human.getX() <= 710) {
+                human.setX(human.getX() + 1);
+            }
             human.setY(human.getY() + 0);
         }
         // TODO: Play
