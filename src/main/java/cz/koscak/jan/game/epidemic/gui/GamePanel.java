@@ -1,11 +1,11 @@
 package cz.koscak.jan.game.epidemic.gui;
 
 import cz.koscak.jan.game.epidemic.Game;
+import cz.koscak.jan.game.epidemic.GameStatus;
 import cz.koscak.jan.game.epidemic.model.Human;
 
-import java.awt.*;
-
 import javax.swing.*;
+import java.awt.*;
 
 public class GamePanel extends JPanel {
 
@@ -25,9 +25,26 @@ public class GamePanel extends JPanel {
 		//setFocusable(true);
 		setLayout(null);
 
-		JButton buttonNew = new JButton("New");
-		buttonNew.setBounds(0, 1, 70, 30);
-		add(buttonNew);
+		addPauseButton();
+	}
+
+	private void addPauseButton() {
+		JButton buttonPause = new JButton("Pause");
+		buttonPause.setBounds(0, 1, 80, 30);
+
+		buttonPause.addActionListener(event -> {
+            GameStatus gameStatus = game.getGameStatus();
+            if (GameStatus.PLAY.equals(gameStatus)) {
+                game.setGameStatus(GameStatus.PAUSED);
+                buttonPause.setText("Resume");
+            }
+            if (GameStatus.PAUSED.equals(gameStatus)) {
+                game.setGameStatus(GameStatus.PLAY);
+                buttonPause.setText("Pause");
+            }
+        });
+
+		add(buttonPause);
 	}
 
 	public void paintComponent(Graphics g) {

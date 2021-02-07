@@ -11,6 +11,8 @@ public class Game {
 
     private List<Human> listOfHumans = new ArrayList<>();
 
+    private GameStatus gameStatus = GameStatus.PLAY;
+
     void newGame() {
         listOfHumans.add(new Human(300, 300));
         listOfHumans.get(0).setState(HumanState.INFECTED);
@@ -24,6 +26,9 @@ public class Game {
     }
 
     void play() {
+        if (GameStatus.PAUSED.equals(gameStatus)) {
+            return;
+        }
         for (Human human: listOfHumans) {
             if (human.getX() <= 710) {
                 human.setX(human.getX() + 1);
@@ -38,6 +43,14 @@ public class Game {
             human.paint(g);
         }
         // TODO: On all objects: paint()
+    }
+
+    public GameStatus getGameStatus() {
+        return gameStatus;
+    }
+
+    public void setGameStatus(GameStatus gameStatus) {
+        this.gameStatus = gameStatus;
     }
 
 }
