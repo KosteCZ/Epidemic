@@ -12,6 +12,7 @@ public class GamePanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private final Game game;
+	private Images images;
 
 	//private static final int HEIGHT = 500;
 	//private static final int WIDTH = 500;
@@ -26,6 +27,8 @@ public class GamePanel extends JPanel {
 		setLayout(null);
 
 		addPauseButton();
+
+		images = new Images();
 	}
 
 	private void addPauseButton() {
@@ -80,6 +83,9 @@ public class GamePanel extends JPanel {
 		human2.paint(g);
 		Human human3 = new Human(200, 230);
 		human3.paint(g);
+
+		g.drawImage(images.humanHealthy, 250, 300, 16, 16, this);
+		g.drawImage(images.humanSick, 250, 325, this);
 	}
 
 	/*private void paintArena(Graphics g) {
