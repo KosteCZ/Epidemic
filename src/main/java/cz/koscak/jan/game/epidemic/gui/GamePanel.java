@@ -109,7 +109,7 @@ public class GamePanel extends JPanel {
 		g.drawString("Deaths: (0-100)", 400, 21);
 		g.drawRect(100, 100, 50, 50);
 		g.drawOval(100, 200, 50, 50);
-		g.drawRect(100, 700, 80, 80);
+		//g.drawRect(100, 700, 80, 80);
 		g.setColor(Color.RED);
 		g.drawRect(-1, 28/*31*/ /*+ 25*/, 801, 801);
 
