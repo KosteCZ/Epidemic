@@ -15,18 +15,19 @@ public class GameFrame extends JFrame {
 		
 		super(TITLE_EPIDEMIC);
 
-		setResizable(false);
 
-		GamePanel gamePanel = new GamePanel(game);
-		add(gamePanel);
-
-		pack();
+		//pack();
 		setSize(825, 825);
+		setResizable(false);
 
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation(dim.width / 2 - getSize().width / 2, 0);
 
-		setLayout(null);
+		//setLayout(null);
+
+		GamePanel gamePanel = new GamePanel(game);
+		add(gamePanel);
+
 		setVisible(true);
 	}
 

@@ -33,7 +33,7 @@ public class GamePanel extends JPanel {
 
 	private void addPauseButton() {
 		JButton buttonPause = new JButton("Pause");
-		buttonPause.setBounds(0, 1, 80, 30);
+		buttonPause.setBounds(0, 1, 80, 28);
 
 		buttonPause.addActionListener(event -> {
             GameStatus gameStatus = game.getGameStatus();
@@ -68,13 +68,23 @@ public class GamePanel extends JPanel {
 		//g.fillRect(7, 30, 786, 763);
 
 		g.setColor(Color.BLACK);
-		g.drawString("Speed: (PAUSED, 1, 2, 4)", 100, 50);
-		g.drawString("PES: (0-5)", 300, 50);
-		g.drawString("Deaths: (0-100)", 400, 50);
+		g.drawString("Speed: (PAUSED, 1, 2, 4)", 100, 21);
+		g.drawString("PES: (0-5)", 300, 21);
+		g.drawString("Deaths: (0-100)", 400, 21);
 		g.drawRect(100, 100, 50, 50);
 		g.drawOval(100, 200, 50, 50);
 		g.drawRect(100, 700, 80, 80);
-		g.drawRect(7, 35 + 25, 720, 720);
+		g.setColor(Color.RED);
+		g.drawRect(-1, 28/*31*/ /*+ 25*/, 760, 760);
+
+		g.setColor(Color.BLUE);
+		g.drawRect(0, 28 + 0, 380, 380);
+		g.setColor(Color.MAGENTA);
+		g.drawRect(0, 28 + 381, 380, 380);
+		g.setColor(Color.GREEN);
+		g.drawRect(381, 28 + 0, 380, 380);
+		g.setColor(Color.YELLOW);
+		g.drawRect(381, 28 + 381, 380, 380);
 
 		//TEST-delete it
 		Human human = new Human(200, 200);
