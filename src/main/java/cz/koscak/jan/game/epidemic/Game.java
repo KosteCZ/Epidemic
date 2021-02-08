@@ -3,7 +3,6 @@ package cz.koscak.jan.game.epidemic;
 import cz.koscak.jan.game.epidemic.model.Human;
 import cz.koscak.jan.game.epidemic.model.HumanState;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,6 +67,53 @@ public class Game {
                 listOfHumans.add(new Human(200 + 6 + i * 21, 670 + 28 + 6 + j * 21));
             }
         }
+
+        // LOWER RIGHT
+//        listOfHumans.add(new Human(470 + 6,       470 + 28 + 9 ));
+//        listOfHumans.add(new Human(470 + 22,      470 + 28 + 9 ));
+        listOfHumans.add(new Human(470 + 14,      470 + 28 + 9 ));
+        listOfHumans.add(new Human(470 + 6,       470 + 28 + 23));
+        listOfHumans.add(new Human(470 + 22,      470 + 28 + 23));
+
+        listOfHumans.add(new Human(470 + 6  + 43, 470 + 28 + 9 ));
+        listOfHumans.add(new Human(470 + 22 + 43, 470 + 28 + 9 ));
+        listOfHumans.add(new Human(470 + 6  + 43, 470 + 28 + 23));
+        listOfHumans.add(new Human(470 + 22 + 43, 470 + 28 + 23));
+
+//        listOfHumans.add(new Human(470 + 6  + 87, 470 + 28 + 9 ));
+//        listOfHumans.add(new Human(470 + 22 + 87, 470 + 28 + 9 ));
+        listOfHumans.add(new Human(470 + 14 + 87, 470 + 28 + 9 ));
+        listOfHumans.add(new Human(470 + 6  + 87, 470 + 28 + 23));
+        listOfHumans.add(new Human(470 + 22 + 87, 470 + 28 + 23));
+
+
+        listOfHumans.add(new Human(470 + 6,       470 + 28 + 9  + 44));
+        listOfHumans.add(new Human(470 + 22,      470 + 28 + 23 + 44));
+
+//        listOfHumans.add(new Human(470 + 6  + 43, 470 + 28 + 9  + 44));
+//        listOfHumans.add(new Human(470 + 22 + 43, 470 + 28 + 23 + 44));
+        listOfHumans.add(new Human(470 + 15 + 43, 470 + 28 + 16 + 44));
+
+        listOfHumans.add(new Human(470 + 6  + 87, 470 + 28 + 9  + 44));
+        listOfHumans.add(new Human(470 + 22 + 87, 470 + 28 + 23 + 44));
+
+
+//        listOfHumans.add(new Human(470 + 6,       470 + 28 + 9  + 88));
+//        listOfHumans.add(new Human(470 + 22,      470 + 28 + 9  + 88));
+        listOfHumans.add(new Human(470 + 14,      470 + 28 + 9  + 88));
+        listOfHumans.add(new Human(470 + 6,       470 + 28 + 23 + 88));
+        listOfHumans.add(new Human(470 + 22,      470 + 28 + 23 + 88));
+
+        listOfHumans.add(new Human(470 + 6  + 43, 470 + 28 + 9  + 88));
+        listOfHumans.add(new Human(470 + 22 + 43, 470 + 28 + 9  + 88));
+        listOfHumans.add(new Human(470 + 6  + 43, 470 + 28 + 23 + 88));
+        listOfHumans.add(new Human(470 + 22 + 43, 470 + 28 + 23 + 88));
+
+//        listOfHumans.add(new Human(470 + 6  + 87, 470 + 28 + 9  + 88));
+//        listOfHumans.add(new Human(470 + 22 + 87, 470 + 28 + 9  + 88));
+        listOfHumans.add(new Human(470 + 14  + 87, 470 + 28 + 9  + 88));
+        listOfHumans.add(new Human(470 + 6  + 87, 470 + 28 + 23 + 88));
+        listOfHumans.add(new Human(470 + 22 + 87, 470 + 28 + 23 + 88));
     }
 
     void play() {
@@ -83,13 +129,12 @@ public class Game {
         // TODO: Play
     }
 
-    public void paint(Graphics g) {
-        /*for (Human human: listOfHumans) {
-            human.paint(g);
-
-        }*/
+ /*   public void paint(Graphics g) {
+//        for (Human human: listOfHumans) {
+////            human.paint(g);
+////        }
         // TODO: On all objects: paint()
-    }
+    }*/
 
     public GameStatus getGameStatus() {
         return gameStatus;
