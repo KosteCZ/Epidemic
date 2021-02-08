@@ -22,9 +22,15 @@ public class GamePanel extends JPanel {
 		//setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		//setBackground(Color.BLACK);
 
+		//setPreferredSize(new Dimension(825, 825));
+		setPreferredSize(new Dimension(790, 790));
+		//setSize(790, 790);
+
 		setDoubleBuffered(true);
 		//setFocusable(true);
 		setLayout(null);
+
+		//System.out.println("Panel Size: " + getSize());
 
 		addPauseButton();
 
@@ -54,9 +60,11 @@ public class GamePanel extends JPanel {
 
 		super.paintComponent(g);
 
-		game.paint(g);
+		Graphics2D g2 = (Graphics2D) g;
 
-		paintGame(g);
+		game.paint(g2);
+
+		paintGame(g2);
 
 	}
 
