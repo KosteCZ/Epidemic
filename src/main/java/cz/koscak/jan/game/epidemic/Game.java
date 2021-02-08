@@ -11,7 +11,8 @@ public class Game {
 
     private List<Human> listOfHumans = new ArrayList<>();
 
-    private GameStatus gameStatus = GameStatus.PLAY;
+    //private GameStatus gameStatus = GameStatus.PLAY;
+    private GameStatus gameStatus = GameStatus.PAUSED;
 
     void newGame() {
         listOfHumans.add(new Human(300, 300));
@@ -23,7 +24,28 @@ public class Game {
         listOfHumans.add(new Human(300, 375));
         listOfHumans.get(3).setState(HumanState.DEAD);
         // TODO: Setup
-    }
+
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                listOfHumans.add(new Human(500 + i * 16, 28 + j * 16));
+            }
+        }
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                listOfHumans.add(new Human(693 + i * 18, 28 + j * 18));
+            }
+        }
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                listOfHumans.add(new Human(500 + i * 18, 28 + 193 + j * 18));
+            }
+        }
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                listOfHumans.add(new Human(693 + i * 18, 28 + 193 + j * 18));
+            }
+        }
+     }
 
     void play() {
         if (GameStatus.PAUSED.equals(gameStatus)) {
@@ -39,9 +61,10 @@ public class Game {
     }
 
     public void paint(Graphics g) {
-        for (Human human: listOfHumans) {
+        /*for (Human human: listOfHumans) {
             human.paint(g);
-        }
+
+        }*/
         // TODO: On all objects: paint()
     }
 
@@ -51,6 +74,10 @@ public class Game {
 
     public void setGameStatus(GameStatus gameStatus) {
         this.gameStatus = gameStatus;
+    }
+
+    public List<Human> getListOfHumans() {
+        return listOfHumans;
     }
 
 }

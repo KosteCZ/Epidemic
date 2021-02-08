@@ -5,15 +5,23 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.Objects;
 
-public class Images {
+class Images {
 
-    public Image humanHealthy;
-    public Image humanSick;
+    Image map;
+    Image humanHealthy;
+    Image humanInfected;
+    Image humanSick;
+    Image humanImmune;
+    Image humanDead;
 
-    public Images() {
+    Images() {
         try {
+            map = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("map-3.png")));
             humanHealthy = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("human-healthy.png")));
+            humanInfected = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("human-infected.png")));
             humanSick = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("human-sick.png")));
+            humanImmune = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("human-immune.png")));
+            humanDead = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("human-dead.png")));
         } catch (IOException exception) {
             System.err.println("Loading image error: " + exception);
             exception.printStackTrace();

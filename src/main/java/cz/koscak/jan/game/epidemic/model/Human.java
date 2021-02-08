@@ -30,12 +30,12 @@ public class Human {
         return y;
     }
 
-    private int getIntX() {
+    public int getIntX() {
         //return (int) Math.round(x);
         return (int) Math.floor(x + 0.5d);
     }
 
-    private int getIntY() {
+    public int getIntY() {
         //return (int) Math.round(y);
         return (int) Math.floor(y + 0.5d);
     }
@@ -44,8 +44,12 @@ public class Human {
         this.state = state;
     }
 
+    public HumanState getState() {
+        return state;
+    }
+
     public void paint(Graphics g) {
-        //g.drawRect(getIntX(), getIntY(), UI_SIZE, UI_SIZE);
+        /*//g.drawRect(getIntX(), getIntY(), UI_SIZE, UI_SIZE);
         // body
         printBody(g);
         g.setColor(Color.RED);
@@ -61,7 +65,7 @@ public class Human {
         g.setColor(Color.black);
         g.drawLine(getIntX() + 5, getIntY() + 12, getIntX() + 11, getIntY() + 12);
         g.setColor(Color.black);
-        g.drawLine(getIntX() + 7, getIntY() + 13, getIntX() + 9, getIntY() + 13);
+        g.drawLine(getIntX() + 7, getIntY() + 13, getIntX() + 9, getIntY() + 13);*/
     }
 
     private void printBody(Graphics g) {
