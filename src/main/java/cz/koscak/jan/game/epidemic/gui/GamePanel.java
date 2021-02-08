@@ -39,8 +39,8 @@ public class GamePanel extends JPanel {
 	}
 
 	private void addPauseButton() {
-		JButton buttonPause = new JButton("Pause");
-		buttonPause.setBounds(0, 1, 80, 28);
+		JButton buttonPause = new JButton("Resume");
+		buttonPause.setBounds(0, 1, 90, 28);
 
 		buttonPause.addActionListener(event -> {
             GameStatus gameStatus = game.getGameStatus();
@@ -107,9 +107,6 @@ public class GamePanel extends JPanel {
 		g.drawString("Speed: (PAUSED, 1, 2, 4)", 100, 21);
 		g.drawString("PES: (0-5)", 300, 21);
 		g.drawString("Deaths: (0-100)", 400, 21);
-		g.drawRect(100, 100, 50, 50);
-		g.drawOval(100, 200, 50, 50);
-		//g.drawRect(100, 700, 80, 80);
 		g.setColor(Color.RED);
 		g.drawRect(-1, 28/*31*/ /*+ 25*/, 801, 801);
 
@@ -122,20 +119,12 @@ public class GamePanel extends JPanel {
 		g.setColor(Color.YELLOW);
 		g.drawRect(400, 28 + 400, 399, 399);
 
-		//TEST-delete it
-		Human human1 = new Human(200, 200);
-		human1.paint(g);
-		Human human2 = new Human(230, 200);
-		human2.paint(g);
-		Human human3 = new Human(200, 230);
-		human3.paint(g);
+		g.drawImage(images.humanHealthy, 420, 300, this);
+		g.drawImage(images.humanSick, 420, 325, this);
 
-		g.drawImage(images.humanHealthy, 250, 300, this);
-		g.drawImage(images.humanSick, 250, 325, this);
-
-		for (Human human: game.getListOfHumans()) {
+		/*for (Human human: game.getListOfHumans()) {
 			human.paint(g);
-		}
+		}*/
 	}
 
 	/*private void paintArena(Graphics g) {

@@ -14,13 +14,13 @@ public class Game {
     private GameStatus gameStatus = GameStatus.PAUSED;
 
     void newGame() {
-        listOfHumans.add(new Human(300, 300));
+        listOfHumans.add(new Human(370, 300));
         listOfHumans.get(0).setState(HumanState.INFECTED);
-        listOfHumans.add(new Human(300, 325));
+        listOfHumans.add(new Human(370, 325));
         listOfHumans.get(1).setState(HumanState.SICK);
-        listOfHumans.add(new Human(300, 350));
+        listOfHumans.add(new Human(370, 350));
         listOfHumans.get(2).setState(HumanState.IMMUNE);
-        listOfHumans.add(new Human(300, 375));
+        listOfHumans.add(new Human(370, 375));
         listOfHumans.get(3).setState(HumanState.DEAD);
         // TODO: Setup
 
@@ -87,14 +87,14 @@ public class Game {
         listOfHumans.add(new Human(470 + 22 + 87, 470 + 28 + 23));
 
 
-        listOfHumans.add(new Human(470 + 6,       470 + 28 + 9  + 44));
+        listOfHumans.add(new Human(470 + 6,       470 + 28 + 10 + 44));
         listOfHumans.add(new Human(470 + 22,      470 + 28 + 23 + 44));
 
 //        listOfHumans.add(new Human(470 + 6  + 43, 470 + 28 + 9  + 44));
 //        listOfHumans.add(new Human(470 + 22 + 43, 470 + 28 + 23 + 44));
         listOfHumans.add(new Human(470 + 15 + 43, 470 + 28 + 16 + 44));
 
-        listOfHumans.add(new Human(470 + 6  + 87, 470 + 28 + 9  + 44));
+        listOfHumans.add(new Human(470 + 6  + 87, 470 + 28 + 10 + 44));
         listOfHumans.add(new Human(470 + 22 + 87, 470 + 28 + 23 + 44));
 
 
