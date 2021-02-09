@@ -4,11 +4,13 @@ public class Place {
 
     private int x, y;
     private PlaceType type;
+    private Area area;
 
-    public Place(int x, int y, PlaceType type) {
+    public Place(int x, int y, PlaceType type, Area area) {
         this.x = x;
         this.y = y;
         this.type = type;
+        this.area = area;
     }
 
     public int getX() {
@@ -22,4 +24,9 @@ public class Place {
     public PlaceType getType() {
         return type;
     }
+
+    public Area getAreaType() {
+        return area;
+    }
+
 }

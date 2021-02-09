@@ -1,9 +1,6 @@
 package cz.koscak.jan.game.epidemic;
 
-import cz.koscak.jan.game.epidemic.model.Human;
-import cz.koscak.jan.game.epidemic.model.HumanState;
-import cz.koscak.jan.game.epidemic.model.Place;
-import cz.koscak.jan.game.epidemic.model.PlaceType;
+import cz.koscak.jan.game.epidemic.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -124,22 +121,26 @@ public class Game {
         // Places
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
-                listOfPlaces.add(new Place(5 + i * 21, 28 + 5 + j * 21, PlaceType.HOME));
+                listOfPlaces.add(new Place(5 + i * 21, 28 + 5 + j * 21,
+                        PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
             }
         }
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
-                listOfPlaces.add(new Place(5 + 200 + i * 21, 28 + 5 + j * 21, PlaceType.HOME));
+                listOfPlaces.add(new Place(5 + 200 + i * 21, 28 + 5 + j * 21,
+                        PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
             }
         }
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
-                listOfPlaces.add(new Place(5 + i * 21, 28 + 5 + 200 + j * 21, PlaceType.HOME));
+                listOfPlaces.add(new Place(5 + i * 21, 28 + 5 + 200 + j * 21,
+                        PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
             }
         }
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
-                listOfPlaces.add(new Place(5 + 200 + i * 21, 28 + 5 + 200 + j * 21, PlaceType.HOME));
+                listOfPlaces.add(new Place(5 + 200 + i * 21, 28 + 5 + 200 + j * 21,
+                        PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
             }
         }
     }
