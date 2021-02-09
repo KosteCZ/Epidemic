@@ -13,7 +13,10 @@ public class Game {
     //private GameStatus gameStatus = GameStatus.PLAY;
     private GameStatus gameStatus = GameStatus.PAUSED;
 
+    private long time = 0;
+
     void newGame() {
+        time = 0;
         listOfHumans.add(new Human(370, 300));
         listOfHumans.get(0).setState(HumanState.INFECTED);
         listOfHumans.add(new Human(370, 325));
@@ -120,8 +123,9 @@ public class Game {
         if (GameStatus.PAUSED.equals(gameStatus)) {
             return;
         }
+        time = time + 1;
         for (Human human: listOfHumans) {
-            if (human.getX() <= 710) {
+            if (human.getX() <= 785) {
                 human.setX(human.getX() + 1);
             }
             human.setY(human.getY() + 0);
@@ -146,6 +150,10 @@ public class Game {
 
     public List<Human> getListOfHumans() {
         return listOfHumans;
+    }
+
+    public long getTime() {
+        return time;
     }
 
 }

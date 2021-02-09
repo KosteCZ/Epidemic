@@ -20,19 +20,32 @@ public class Main {
     }
 
     private void runGame(GameFrame gameFrame, Game game) {
-        Runnable r1 = () -> {
+        Thread threadUI = new Thread(() -> {
             try {
                 while (true) {
                     gameFrame.repaint();
-                    game.play();
-                    Thread.sleep(100);
+                    //game.play();
+                    Thread.sleep(50 /*100*/);
                 }
             } catch (InterruptedException exception) {
                 System.err.println("ERROR: " + exception.getMessage());
                 exception.printStackTrace();
             }
-        };
-        r1.run();
+        });
+        threadUI.start();
+        Thread threadGame = new Thread(() -> {
+            try {
+                while (true) {
+                    //gameFrame.repaint();
+                    game.play();
+                    Thread.sleep(10 /*100*/);
+                }
+            } catch (InterruptedException exception) {
+                System.err.println("ERROR: " + exception.getMessage());
+                exception.printStackTrace();
+            }
+        });
+        threadGame.start();
     }
 
 }

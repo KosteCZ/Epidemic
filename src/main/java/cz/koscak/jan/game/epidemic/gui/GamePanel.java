@@ -106,7 +106,8 @@ public class GamePanel extends JPanel {
 		g.setColor(Color.BLACK);
 		g.drawString("Speed: (PAUSED, 1, 2, 4)", 100, 21);
 		g.drawString("PES: (0-5)", 300, 21);
-		g.drawString("Deaths: (0-100)", 400, 21);
+        g.drawString("Deaths: (0-100)", 400, 21);
+        g.drawString("Time: " + game.getTime(), 500, 21);
 		g.setColor(Color.RED);
 		g.drawRect(-1, 28/*31*/ /*+ 25*/, 801, 801);
 
