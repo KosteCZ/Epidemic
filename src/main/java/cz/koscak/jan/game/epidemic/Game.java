@@ -2,6 +2,8 @@ package cz.koscak.jan.game.epidemic;
 
 import cz.koscak.jan.game.epidemic.model.Human;
 import cz.koscak.jan.game.epidemic.model.HumanState;
+import cz.koscak.jan.game.epidemic.model.Place;
+import cz.koscak.jan.game.epidemic.model.PlaceType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +11,7 @@ import java.util.List;
 public class Game {
 
     private List<Human> listOfHumans = new ArrayList<>();
+    private List<Place> listOfPlaces = new ArrayList<>();
 
     //private GameStatus gameStatus = GameStatus.PLAY;
     private GameStatus gameStatus = GameStatus.PAUSED;
@@ -117,6 +120,28 @@ public class Game {
         listOfHumans.add(new Human(470 + 14  + 87, 470 + 28 + 9  + 88));
         listOfHumans.add(new Human(470 + 6  + 87, 470 + 28 + 23 + 88));
         listOfHumans.add(new Human(470 + 22 + 87, 470 + 28 + 23 + 88));
+
+        // Places
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                listOfPlaces.add(new Place(5 + i * 21, 28 + 5 + j * 21, PlaceType.HOME));
+            }
+        }
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                listOfPlaces.add(new Place(5 + 200 + i * 21, 28 + 5 + j * 21, PlaceType.HOME));
+            }
+        }
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                listOfPlaces.add(new Place(5 + i * 21, 28 + 5 + 200 + j * 21, PlaceType.HOME));
+            }
+        }
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                listOfPlaces.add(new Place(5 + 200 + i * 21, 28 + 5 + 200 + j * 21, PlaceType.HOME));
+            }
+        }
     }
 
     void play() {
@@ -150,6 +175,10 @@ public class Game {
 
     public List<Human> getListOfHumans() {
         return listOfHumans;
+    }
+
+    public List<Place> getListOfPlaces() {
+        return listOfPlaces;
     }
 
     public long getTime() {

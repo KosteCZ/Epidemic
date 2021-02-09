@@ -4,6 +4,7 @@ import cz.koscak.jan.game.epidemic.Game;
 import cz.koscak.jan.game.epidemic.GameStatus;
 import cz.koscak.jan.game.epidemic.model.Human;
 import cz.koscak.jan.game.epidemic.model.HumanState;
+import cz.koscak.jan.game.epidemic.model.Place;
 
 import javax.swing.*;
 import java.awt.*;
@@ -67,10 +68,21 @@ public class GamePanel extends JPanel {
 
 		paintGame(g2);
 
+		paintPlaces(g2);
+
 		paintHumans(g2);
 	}
 
-	private void paintHumans(Graphics g) {
+    private void paintPlaces(Graphics g) {
+        for(Place place: game.getListOfPlaces()) {
+            //g.drawImage(images.humanHealthy, place.getX(), place.getY(), this);
+            g.setColor(Color.BLACK);
+            g.drawOval(place.getX(), place.getY(), 16, 16);
+            g.drawRect(place.getX(), place.getY(), 16, 16);
+        }
+    }
+
+    private void paintHumans(Graphics g) {
 		for (Human human: game.getListOfHumans()) {
 			if (HumanState.HEALTHY.equals(human.getState())) {
 				g.drawImage(images.humanHealthy, human.getIntX(), human.getIntY(), this);
