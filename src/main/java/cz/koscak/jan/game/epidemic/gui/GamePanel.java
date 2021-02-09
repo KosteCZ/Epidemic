@@ -77,8 +77,8 @@ public class GamePanel extends JPanel {
         for(Place place: game.getListOfPlaces()) {
             //g.drawImage(images.humanHealthy, place.getX(), place.getY(), this);
             g.setColor(Color.BLACK);
-            g.drawOval(place.getX(), place.getY(), 16, 16);
-            g.drawRect(place.getX(), place.getY(), 16, 16);
+            g.drawOval(place.getX(), place.getY(), 15, 15);
+            g.drawRect(place.getX(), place.getY(), 15, 15);
         }
     }
 

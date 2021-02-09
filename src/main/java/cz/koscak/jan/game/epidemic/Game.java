@@ -27,6 +27,29 @@ public class Game {
         listOfHumans.get(3).setState(HumanState.DEAD);
         // TODO: Setup
 
+        // UPPER LEFT
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                listOfHumans.add(new Human(6 + i * 21, 0 + 28 + 6 + j * 21));
+            }
+        }
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                listOfHumans.add(new Human(6 + i * 21, 200 + 28 + 6 + j * 21));
+            }
+        }
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                listOfHumans.add(new Human(200 + 6 + i * 21, 0 + 28 + 6 + j * 21));
+            }
+        }
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                listOfHumans.add(new Human(200 + 6 + i * 21, 200 + 28 + 6 + j * 21));
+            }
+        }
+
+
         // UPPER RIGHT
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
@@ -122,19 +145,19 @@ public class Game {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
                 listOfPlaces.add(new Place(5 + i * 21, 28 + 5 + j * 21,
-                        PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+                        PlaceType.SHOP, Area.QUADRANT_TOP_LEFT));
             }
         }
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
                 listOfPlaces.add(new Place(5 + 200 + i * 21, 28 + 5 + j * 21,
-                        PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+                        PlaceType.SPORT, Area.QUADRANT_TOP_LEFT));
             }
         }
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
                 listOfPlaces.add(new Place(5 + i * 21, 28 + 5 + 200 + j * 21,
-                        PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+                        PlaceType.WORK, Area.QUADRANT_TOP_LEFT));
             }
         }
         for (int i = 0; i < 6; i++) {
@@ -143,6 +166,89 @@ public class Game {
                         PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
             }
         }
+
+        // LOWER RIGHT - Quadrant Bottom Right
+//        listOfPlaces.add(new Place(470 + 6,       470 + 28 + 9 ,
+//                        PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+//        listOfPlaces.add(new Place(470 + 22,      470 + 28 + 9 ,
+//                        PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+        listOfPlaces.add(new Place(470 + 14,      470 + 28 + 9 ,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+        listOfPlaces.add(new Place(470 + 6,       470 + 28 + 23,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+        listOfPlaces.add(new Place(470 + 22,      470 + 28 + 23,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+
+        listOfPlaces.add(new Place(470 + 6  + 43, 470 + 28 + 9 ,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+        listOfPlaces.add(new Place(470 + 22 + 43, 470 + 28 + 9 ,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+        listOfPlaces.add(new Place(470 + 6  + 43, 470 + 28 + 23,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+        listOfPlaces.add(new Place(470 + 22 + 43, 470 + 28 + 23,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+
+//        listOfPlaces.add(new Place(470 + 6  + 87, 470 + 28 + 9 ,
+//                        PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+//        listOfPlaces.add(new Place(470 + 22 + 87, 470 + 28 + 9 ,
+//                        PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+        listOfPlaces.add(new Place(470 + 14 + 87, 470 + 28 + 9 ,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+        listOfPlaces.add(new Place(470 + 6  + 87, 470 + 28 + 23,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+        listOfPlaces.add(new Place(470 + 22 + 87, 470 + 28 + 23,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+
+
+        listOfPlaces.add(new Place(470 + 6,       470 + 28 + 10 + 44,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+        listOfPlaces.add(new Place(470 + 22,      470 + 28 + 23 + 44,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+
+//        llistOfPlaces.add(new Place(470 + 6  + 43, 470 + 28 + 9  + 44,
+//                        PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+//        listOfPlaces.add(new Place(470 + 22 + 43, 470 + 28 + 23 + 44,
+//                        PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+        listOfPlaces.add(new Place(470 + 15 + 43, 470 + 28 + 16 + 44,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+
+        listOfPlaces.add(new Place(470 + 6  + 87, 470 + 28 + 10 + 44,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+        listOfPlaces.add(new Place(470 + 22 + 87, 470 + 28 + 23 + 44,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+
+
+//        listOfPlaces.add(new Place(470 + 6,       470 + 28 + 9  + 88,
+//                        PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+//        listOfPlaces.add(new Place(470 + 22,      470 + 28 + 9  + 88,
+//                        PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+        listOfPlaces.add(new Place(470 + 14,      470 + 28 + 9  + 88,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+        listOfPlaces.add(new Place(470 + 6,       470 + 28 + 23 + 88,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+        listOfPlaces.add(new Place(470 + 22,      470 + 28 + 23 + 88,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+
+        listOfPlaces.add(new Place(470 + 6  + 43, 470 + 28 + 9  + 88,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+        listOfPlaces.add(new Place(470 + 22 + 43, 470 + 28 + 9  + 88,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+        listOfPlaces.add(new Place(470 + 6  + 43, 470 + 28 + 23 + 88,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+        listOfPlaces.add(new Place(470 + 22 + 43, 470 + 28 + 23 + 88,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+
+//        listOfPlaces.add(new Place(470 + 6  + 87, 470 + 28 + 9  + 88,
+//                        PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+//        listOfPlaces.add(new Place(470 + 22 + 87, 470 + 28 + 9  + 88,
+//                        PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+        listOfPlaces.add(new Place(470 + 14  + 87, 470 + 28 + 9  + 88,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+        listOfPlaces.add(new Place(470 + 6  + 87, 470 + 28 + 23 + 88,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+        listOfPlaces.add(new Place(470 + 22 + 87, 470 + 28 + 23 + 88,
+                PlaceType.HOME, Area.QUADRANT_TOP_LEFT));
+
     }
 
     void play() {
