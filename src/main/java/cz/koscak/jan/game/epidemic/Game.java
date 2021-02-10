@@ -50,6 +50,7 @@ public class Game {
                 listOfHumans.add(new Human(200 + 6 + i * 21, 200 + 28 + 6 + j * 21));
             }
         }*/
+        listOfHumans.add(new Human(201 + 6 + 0 * 21, 202 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 1));
 
 
         // UPPER RIGHT
@@ -570,12 +571,14 @@ public class Game {
         }
     }
 
- /*   public void paint(Graphics g) {
-//        for (Human human: listOfHumans) {
-////            human.paint(g);
-////        }
-        // TODO: On all objects: paint()
-    }*/
+    public Place findPlace(Area area, PlaceType placeType, int position) {
+        for (Place place: listOfPlaces) {
+            if (place.getPosition() == position && area.equals(place.getArea()) && placeType.equals(place.getType())) {
+                return place;
+            }
+        }
+        return null;
+    }
 
     public GameStatus getGameStatus() {
         return gameStatus;

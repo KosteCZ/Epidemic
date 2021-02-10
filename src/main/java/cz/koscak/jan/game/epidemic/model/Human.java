@@ -3,6 +3,7 @@ package cz.koscak.jan.game.epidemic.model;
 import cz.koscak.jan.game.epidemic.Game;
 
 import java.util.List;
+import java.util.Random;
 
 public class Human {
 
@@ -14,11 +15,24 @@ public class Human {
     private double x, y;
     private HumanState state;
     private int timeToNextState = -1;
+    private int timeToNextMove = 0;
+    private Area area;
+    private int position = 0;
+    private boolean moving = false;
+    private Place targetPlace;
 
     public Human(double x, double y) {
         this.x = x;
         this.y = y;
         setState(HumanState.HEALTHY);
+    }
+
+    public Human(double x, double y, Area area, int position) {
+        this.x = x;
+        this.y = y;
+        setState(HumanState.HEALTHY);
+        this.area = area;
+        this.position = position;
     }
 
     public void setX(double x) {
@@ -65,7 +79,12 @@ public class Human {
     }
 
     public void doAction(Game game, long time, List<Virus> listOfViruses) {
-        // TODO: Do action
+        changeStateWithTime();
+        move(game);
+        produceVirus(time, listOfViruses);
+    }
+
+    private void changeStateWithTime() {
         if (HumanState.HEALTHY.equals(state) == false) {
             timeToNextState = timeToNextState - 1;
             if (timeToNextState <= 0) {
@@ -78,8 +97,54 @@ public class Human {
                 }
             }
         }
+    }
 
+    private void move(Game game) {
+        if (moving == false && timeToNextMove == 0) {
+            if (position > 0) {
+                Random random = new Random();
+                int randomNumber = random.nextInt(4);
+                System.out.print("Random: " + randomNumber + ". ");
+                PlaceType targetPlaceType = PlaceType.HOME;
+                if (randomNumber == 0) {
+                    System.out.println("Going to " + PlaceType.HOME);
+                    targetPlaceType = PlaceType.HOME;
+                } else if (randomNumber == 1) {
+                    System.out.println("Going to " + PlaceType.WORK);
+                    targetPlaceType = PlaceType.WORK;
+                } else if (randomNumber == 2) {
+                    System.out.println("Going to " + PlaceType.SHOP);
+                    targetPlaceType = PlaceType.SHOP;
+                } else if (randomNumber == 3) {
+                    System.out.println("Going to " + PlaceType.SPORT);
+                    targetPlaceType = PlaceType.SPORT;
+                }
+                timeToNextMove = 50;
 
+                targetPlace = game.findPlace(area, targetPlaceType, position);
+                if(targetPlace != null) {
+                    System.out.println("Area: " + targetPlace.getArea() + ", type: " + targetPlace.getType()
+                            + ", position: " + targetPlace.getPosition() + ", x:" + targetPlace.getX() + ", y:" + targetPlace.getY());
+                    // TODO: Set moving to that target
+                    // moving = true;
+                } else {
+                    System.out.println("No place find!!!");
+                }
+            }
+        }
+        if (moving == false && timeToNextMove > 0) {
+            // Waiting in current place
+            timeToNextMove = timeToNextMove - 1;
+        }
+        if (moving == true) {
+            // TODO: move
+            if (targetPlace.getX() == getIntX() && targetPlace.getY() == getIntY()) {
+                moving = false;
+            }
+        }
+    }
+
+    private void produceVirus(long time, List<Virus> listOfViruses) {
         if (HumanState.INFECTED.equals(state) || HumanState.SICK.equals(state)) {
             if (time % 5 == 0) {
                 listOfViruses.add(new Virus(x + Virus.MOUTH_X, y + Virus.MOUTH_Y));
