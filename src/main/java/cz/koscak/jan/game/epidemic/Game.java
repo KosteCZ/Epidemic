@@ -4,11 +4,13 @@ import cz.koscak.jan.game.epidemic.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 public class Game {
 
     private List<Human> listOfHumans = new ArrayList<>();
     private List<Place> listOfPlaces = new ArrayList<>();
+    private List<Virus> listOfViruses = new ArrayList<>();
 
     //private GameStatus gameStatus = GameStatus.PLAY;
     private GameStatus gameStatus = GameStatus.PAUSED;
@@ -256,13 +258,24 @@ public class Game {
             return;
         }
         time = time + 1;
-        for (Human human: listOfHumans) {
+        /*for (Human human: listOfHumans) {
             if (human.getX() <= 785) {
                 human.setX(human.getX() + 1);
             }
             human.setY(human.getY() + 0);
-        }
+        }*/
+
+
         // TODO: Play
+        for (Human human: listOfHumans) {
+            human.doAction(this, time, listOfViruses);
+        }
+        ListIterator<Virus> iteratorVirus = listOfViruses.listIterator();
+        while(iteratorVirus.hasNext()){
+            if(iteratorVirus.next().doAction() == false){
+                iteratorVirus.remove();
+            }
+        }
     }
 
  /*   public void paint(Graphics g) {
@@ -286,6 +299,10 @@ public class Game {
 
     public List<Place> getListOfPlaces() {
         return listOfPlaces;
+    }
+
+    public List<Virus> getListOfViruses() {
+        return listOfViruses;
     }
 
     public long getTime() {

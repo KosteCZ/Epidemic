@@ -1,6 +1,9 @@
 package cz.koscak.jan.game.epidemic.model;
 
+import cz.koscak.jan.game.epidemic.Game;
+
 import java.awt.*;
+import java.util.List;
 
 public class Human {
 
@@ -48,8 +51,17 @@ public class Human {
         return state;
     }
 
-    public void paint(Graphics g) {
-        /*//g.drawRect(getIntX(), getIntY(), UI_SIZE, UI_SIZE);
+    public void doAction(Game game, long time, List<Virus> listOfViruses) {
+        // TODO: Do action
+        if (HumanState.INFECTED.equals(state) || HumanState.SICK.equals(state)) {
+            if (time % 5 == 0) {
+                listOfViruses.add(new Virus(x + 5, y + 7));
+            }
+        }
+    }
+
+    /*public void paint(Graphics g) {
+        //g.drawRect(getIntX(), getIntY(), UI_SIZE, UI_SIZE);
         // body
         printBody(g);
         g.setColor(Color.RED);
@@ -65,7 +77,7 @@ public class Human {
         g.setColor(Color.black);
         g.drawLine(getIntX() + 5, getIntY() + 12, getIntX() + 11, getIntY() + 12);
         g.setColor(Color.black);
-        g.drawLine(getIntX() + 7, getIntY() + 13, getIntX() + 9, getIntY() + 13);*/
+        g.drawLine(getIntX() + 7, getIntY() + 13, getIntX() + 9, getIntY() + 13);
     }
 
     private void printBody(Graphics g) {
@@ -81,6 +93,6 @@ public class Human {
             g.setColor(Color.DARK_GRAY);
         }
         g.fillOval(getIntX(), getIntY(), UI_SIZE, UI_SIZE);
-    }
+    }*/
 
 }

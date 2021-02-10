@@ -5,6 +5,7 @@ import cz.koscak.jan.game.epidemic.GameStatus;
 import cz.koscak.jan.game.epidemic.model.Human;
 import cz.koscak.jan.game.epidemic.model.HumanState;
 import cz.koscak.jan.game.epidemic.model.Place;
+import cz.koscak.jan.game.epidemic.model.Virus;
 
 import javax.swing.*;
 import java.awt.*;
@@ -83,27 +84,32 @@ public class GamePanel extends JPanel {
     }
 
     private void paintHumans(Graphics g) {
-		for (Human human: game.getListOfHumans()) {
-			if (HumanState.HEALTHY.equals(human.getState())) {
-				g.drawImage(images.humanHealthy, human.getIntX(), human.getIntY(), this);
-			} else if (HumanState.INFECTED.equals(human.getState())) {
-				g.drawImage(images.humanInfected, human.getIntX(), human.getIntY(), this);
-			} else if (HumanState.SICK.equals(human.getState())) {
-				g.drawImage(images.humanSick, human.getIntX(), human.getIntY(), this);
-			} else if (HumanState.IMMUNE.equals(human.getState())) {
-				g.drawImage(images.humanImmune, human.getIntX(), human.getIntY(), this);
-			} else if (HumanState.DEAD.equals(human.getState())) {
-				g.drawImage(images.humanDead, human.getIntX(), human.getIntY(), this);
-			} else {
-				System.err.println("ERROR - printing human - unknown state!");
-				System.err.println("ERROR - printing human - state: " + human.getState());
-				g.setColor(Color.YELLOW);
-				g.fillRect(human.getIntX(), human.getIntY(), 16, 16);
-				g.setColor(Color.BLACK);
-				g.drawRect(human.getIntX(), human.getIntY(), 16, 16);
-			}
-		}
-	}
+        for (Human human : game.getListOfHumans()) {
+            if (HumanState.HEALTHY.equals(human.getState())) {
+                g.drawImage(images.humanHealthy, human.getIntX(), human.getIntY(), this);
+            } else if (HumanState.INFECTED.equals(human.getState())) {
+                g.drawImage(images.humanInfected, human.getIntX(), human.getIntY(), this);
+            } else if (HumanState.SICK.equals(human.getState())) {
+                g.drawImage(images.humanSick, human.getIntX(), human.getIntY(), this);
+            } else if (HumanState.IMMUNE.equals(human.getState())) {
+                g.drawImage(images.humanImmune, human.getIntX(), human.getIntY(), this);
+            } else if (HumanState.DEAD.equals(human.getState())) {
+                g.drawImage(images.humanDead, human.getIntX(), human.getIntY(), this);
+            } else {
+                System.err.println("ERROR - printing human - unknown state!");
+                System.err.println("ERROR - printing human - state: " + human.getState());
+                g.setColor(Color.YELLOW);
+                g.fillRect(human.getIntX(), human.getIntY(), 16, 16);
+                g.setColor(Color.BLACK);
+                g.drawRect(human.getIntX(), human.getIntY(), 16, 16);
+            }
+        }
+
+        for (Virus virus : game.getListOfViruses()) {
+            g.setColor(Color.RED);
+            g.drawRect(virus.getIntX(), virus.getIntY(), 3, 3);
+        }
+    }
 
 
 	private void paintGame(Graphics g) {
