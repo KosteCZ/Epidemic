@@ -13,6 +13,7 @@ public class Human {
     private static final int DURATION_OF_IMMUNE_STATE = 500;
 
     private double x, y;
+    private double vx, vy;
     private HumanState state;
     private int timeToNextState = -1;
     private int timeToNextMove = 0;
@@ -124,9 +125,22 @@ public class Human {
                 targetPlace = game.findPlace(area, targetPlaceType, position);
                 if(targetPlace != null) {
                     System.out.println("Area: " + targetPlace.getArea() + ", type: " + targetPlace.getType()
-                            + ", position: " + targetPlace.getPosition() + ", x:" + targetPlace.getX() + ", y:" + targetPlace.getY());
-                    // TODO: Set moving to that target
-                    // moving = true;
+                            + ", position: " + targetPlace.getPosition() + ", x:" + targetPlace.getXForHuman() + ", y:" + targetPlace.getYForHuman());
+                    System.out.println("x: " + x + ", y: " + y);
+
+                    // Set moving to that target
+                    double x_difference = targetPlace.getXForHuman() - x;
+                    double y_difference = targetPlace.getYForHuman() - y;
+                    System.out.println("Difference: " + (x_difference + y_difference));
+                    double z_difference = Math.sqrt((x_difference * x_difference) + (y_difference * y_difference));
+                    if (z_difference != 0) {
+                        this.vx = x_difference / z_difference;
+                        this.vy = y_difference / z_difference;
+                    } else {
+                        this.vx = 0;
+                        this.vy = 0;
+                    }
+                    moving = true;
                 } else {
                     System.out.println("No place find!!!");
                 }
@@ -137,8 +151,11 @@ public class Human {
             timeToNextMove = timeToNextMove - 1;
         }
         if (moving == true) {
-            // TODO: move
-            if (targetPlace.getX() == getIntX() && targetPlace.getY() == getIntY()) {
+            x = x + vx;
+            y = y + vy;
+            if (targetPlace.getXForHuman() == getIntX() && targetPlace.getYForHuman() == getIntY()) {
+                x = targetPlace.getXForHuman();
+                y = targetPlace.getYForHuman();
                 moving = false;
             }
         }

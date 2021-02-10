@@ -15,12 +15,20 @@ public class Place {
         this.position = position;
     }
 
-    public int getX() {
+    public int getXForPainting() {
         return x;
     }
 
-    public int getY() {
+    public int getXForHuman() {
+        return x + 1;
+    }
+
+    public int getYForPainting() {
         return y;
+    }
+
+    public int getYForHuman() {
+        return y + 1;
     }
 
     public PlaceType getType() {

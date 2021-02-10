@@ -51,6 +51,7 @@ public class Game {
             }
         }*/
         listOfHumans.add(new Human(201 + 6 + 0 * 21, 202 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 1));
+        listOfHumans.add(new Human(201 + 6 + 0 * 21, 218 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 2));
 
 
         // UPPER RIGHT
@@ -552,10 +553,10 @@ public class Game {
         }
         time = time + 1;
         /*for (Human human: listOfHumans) {
-            if (human.getX() <= 785) {
-                human.setX(human.getX() + 1);
+            if (human.getXForHuman() <= 785) {
+                human.setX(human.getXForHuman() + 1);
             }
-            human.setY(human.getY() + 0);
+            human.setY(human.getYForHuman() + 0);
         }*/
 
 

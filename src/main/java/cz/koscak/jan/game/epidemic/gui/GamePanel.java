@@ -78,12 +78,12 @@ public class GamePanel extends JPanel {
 
     private void paintPlaces(Graphics g) {
         for(Place place: game.getListOfPlaces()) {
-            //g.drawImage(images.humanHealthy, place.getX(), place.getY(), this);
+            //g.drawImage(images.humanHealthy, place.getXForPainting(), place.getYForPainting(), this);
             g.setColor(Color.BLACK);
-            g.drawOval(place.getX(), place.getY(), 15, 15);
-            g.drawRect(place.getX(), place.getY(), 15, 15);
+            g.drawOval(place.getXForPainting(), place.getYForPainting(), 15, 15);
+            g.drawRect(place.getXForPainting(), place.getYForPainting(), 15, 15);
             g.setColor(Color.RED);
-            g.drawString(String.valueOf(place.getPosition()), place.getX() + 1 , place.getY() + 12);
+            g.drawString(String.valueOf(place.getPosition()), place.getXForPainting() + 1 , place.getYForPainting() + 12);
         }
     }
 
