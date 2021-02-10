@@ -272,7 +272,7 @@ public class Game {
         }
         ListIterator<Virus> iteratorVirus = listOfViruses.listIterator();
         while(iteratorVirus.hasNext()){
-            if(iteratorVirus.next().doAction() == false){
+            if(iteratorVirus.next().doAction(listOfHumans) == false){
                 iteratorVirus.remove();
             }
         }

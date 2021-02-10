@@ -2,19 +2,23 @@ package cz.koscak.jan.game.epidemic.model;
 
 import cz.koscak.jan.game.epidemic.Game;
 
-import java.awt.*;
 import java.util.List;
 
 public class Human {
 
-    private static final int UI_SIZE = 16;
+    //private static final int UI_SIZE = 16;
+    private static final int DURATION_OF_INFECTED_STATE = 200;
+    private static final int DURATION_OF_SICK_STATE = 500;
+    private static final int DURATION_OF_IMMUNE_STATE = 500;
+
     private double x, y;
     private HumanState state;
+    private int timeToNextState = -1;
 
     public Human(double x, double y) {
         this.x = x;
         this.y = y;
-        state = HumanState.HEALTHY;
+        setState(HumanState.HEALTHY);
     }
 
     public void setX(double x) {
@@ -44,6 +48,15 @@ public class Human {
     }
 
     public void setState(HumanState state) {
+        if (HumanState.HEALTHY.equals(state)) {
+            timeToNextState = -1;
+        } else if (HumanState.INFECTED.equals(state)) {
+            timeToNextState = DURATION_OF_INFECTED_STATE;
+        } else if (HumanState.SICK.equals(state)) {
+            timeToNextState = DURATION_OF_SICK_STATE;
+        } else if (HumanState.IMMUNE.equals(state)) {
+            timeToNextState = DURATION_OF_IMMUNE_STATE;
+        }
         this.state = state;
     }
 
@@ -53,11 +66,30 @@ public class Human {
 
     public void doAction(Game game, long time, List<Virus> listOfViruses) {
         // TODO: Do action
-        if (HumanState.INFECTED.equals(state) || HumanState.SICK.equals(state)) {
-            if (time % 5 == 0) {
-                listOfViruses.add(new Virus(x + 5, y + 7));
+        if (HumanState.HEALTHY.equals(state) == false) {
+            timeToNextState = timeToNextState - 1;
+            if (timeToNextState <= 0) {
+                if (HumanState.IMMUNE.equals(state)) {
+                    setState(HumanState.HEALTHY);
+                } else if (HumanState.SICK.equals(state)) {
+                    setState(HumanState.IMMUNE);
+                } else if (HumanState.INFECTED.equals(state)) {
+                    setState(HumanState.SICK);
+                }
             }
         }
+
+
+        if (HumanState.INFECTED.equals(state) || HumanState.SICK.equals(state)) {
+            if (time % 5 == 0) {
+                listOfViruses.add(new Virus(x + Virus.MOUTH_X, y + Virus.MOUTH_Y));
+            }
+        }
+    }
+
+    public void infect() {
+        setState(HumanState.INFECTED);
+        timeToNextState = DURATION_OF_INFECTED_STATE;
     }
 
     /*public void paint(Graphics g) {

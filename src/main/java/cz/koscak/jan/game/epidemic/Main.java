@@ -38,7 +38,7 @@ public class Main {
                 while (true) {
                     //gameFrame.repaint();
                     game.play();
-                    Thread.sleep(10 /*100*/);
+                    Thread.sleep(20 /*10*/);
                 }
             } catch (InterruptedException exception) {
                 System.err.println("ERROR: " + exception.getMessage());

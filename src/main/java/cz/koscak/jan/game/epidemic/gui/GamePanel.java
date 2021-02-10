@@ -9,6 +9,8 @@ import cz.koscak.jan.game.epidemic.model.Virus;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ConcurrentModificationException;
+import java.util.ListIterator;
 
 public class GamePanel extends JPanel {
 
@@ -105,9 +107,15 @@ public class GamePanel extends JPanel {
             }
         }
 
-        for (Virus virus : game.getListOfViruses()) {
-            g.setColor(Color.RED);
-            g.drawRect(virus.getIntX(), virus.getIntY(), 3, 3);
+        g.setColor(Color.RED);
+        ListIterator<Virus> iteratorVirus = game.getListOfViruses().listIterator();
+        try {
+            while(iteratorVirus.hasNext()) {
+                    Virus virus = iteratorVirus.next();
+                    g.drawRect(virus.getIntX(), virus.getIntY(), 3, 3);
+            }
+        } catch (ConcurrentModificationException exception) {
+            // Ignore
         }
     }
 
