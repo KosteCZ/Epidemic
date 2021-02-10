@@ -82,6 +82,8 @@ public class GamePanel extends JPanel {
             g.setColor(Color.BLACK);
             g.drawOval(place.getX(), place.getY(), 15, 15);
             g.drawRect(place.getX(), place.getY(), 15, 15);
+            g.setColor(Color.RED);
+            g.drawString(String.valueOf(place.getPosition()), place.getX() + 1 , place.getY() + 12);
         }
     }
 
