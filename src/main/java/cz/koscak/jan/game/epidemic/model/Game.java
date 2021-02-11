@@ -26,27 +26,7 @@ public class Game {
         listOfHumans.get(3).setState(HumanState.DEAD);
         // TODO: Setup
 
-        // UPPER LEFT
-        /*for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 6; j++) {
-                listOfHumans.add(new Human(6 + i * 21, 0 + 28 + 6 + j * 21));
-            }
-        }
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 6; j++) {
-                listOfHumans.add(new Human(6 + i * 21, 200 + 28 + 6 + j * 21));
-            }
-        }
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 6; j++) {
-                listOfHumans.add(new Human(200 + 6 + i * 21, 0 + 28 + 6 + j * 21));
-            }
-        }
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 6; j++) {
-                listOfHumans.add(new Human(200 + 6 + i * 21, 200 + 28 + 6 + j * 21));
-            }
-        }*/
+
         listOfHumans.add(new Human(201 + 6 + 0 * 21, 202 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 1));
         listOfHumans.add(new Human(201 + 1 + 1 * 21, 202 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 26));
         listOfHumans.add(new Human(201 + 7 + 2 * 21, 202 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 4));
@@ -91,7 +71,7 @@ public class Game {
 
 
         // UPPER RIGHT
-        for (int i = 0; i < 6; i++) {
+/*        for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 6; j++) {
                 listOfHumans.add(new Human(500 + 0 + i * 17, 28 + 1 + j * 17));
             }
@@ -133,7 +113,7 @@ public class Game {
                 listOfHumans.add(new Human(200 + 6 + i * 21, 670 + 28 + 6 + j * 21));
             }
         }
-
+*/
         // LOWER RIGHT
 //        listOfHumans.add(new Human(470 + 6,       470 + 28 + 9 ));
 //        listOfHumans.add(new Human(470 + 22,      470 + 28 + 9 ));
