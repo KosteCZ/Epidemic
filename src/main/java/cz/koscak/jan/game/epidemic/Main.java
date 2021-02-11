@@ -1,6 +1,7 @@
 package cz.koscak.jan.game.epidemic;
 
 import cz.koscak.jan.game.epidemic.gui.GameFrame;
+import cz.koscak.jan.game.epidemic.model.Game;
 
 import javax.swing.*;
 

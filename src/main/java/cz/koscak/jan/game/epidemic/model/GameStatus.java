@@ -1,4 +1,4 @@
-package cz.koscak.jan.game.epidemic;
+package cz.koscak.jan.game.epidemic.model;
 
 public enum GameStatus {
     PLAY, PAUSED

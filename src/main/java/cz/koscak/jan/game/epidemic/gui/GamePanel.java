@@ -1,7 +1,7 @@
 package cz.koscak.jan.game.epidemic.gui;
 
-import cz.koscak.jan.game.epidemic.Game;
-import cz.koscak.jan.game.epidemic.GameStatus;
+import cz.koscak.jan.game.epidemic.model.Game;
+import cz.koscak.jan.game.epidemic.model.GameStatus;
 import cz.koscak.jan.game.epidemic.model.Human;
 import cz.koscak.jan.game.epidemic.model.HumanState;
 import cz.koscak.jan.game.epidemic.model.Place;

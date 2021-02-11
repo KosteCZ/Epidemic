@@ -4,7 +4,7 @@ import java.awt.*;
 
 import javax.swing.*;
 
-import cz.koscak.jan.game.epidemic.Game;
+import cz.koscak.jan.game.epidemic.model.Game;
 
 public class GameFrame extends JFrame {
 

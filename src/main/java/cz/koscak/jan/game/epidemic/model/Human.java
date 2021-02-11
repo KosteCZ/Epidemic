@@ -1,7 +1,5 @@
 package cz.koscak.jan.game.epidemic.model;
 
-import cz.koscak.jan.game.epidemic.Game;
-
 import java.util.List;
 import java.util.Random;
 
@@ -104,7 +102,7 @@ public class Human {
         if (moving == false && timeToNextMove == 0) {
             if (position > 0) {
                 Random random = new Random();
-                int randomNumber = 1; //random.nextInt(4);
+                int randomNumber = random.nextInt(4);
                 System.out.print("Random: " + randomNumber + ". ");
                 PlaceType targetPlaceType = PlaceType.HOME;
                 if (randomNumber == 0) {
