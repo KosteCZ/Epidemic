@@ -10,23 +10,47 @@ public class Game {
     private List<Place> listOfPlaces = new ArrayList<>();
     private List<Virus> listOfViruses = new ArrayList<>();
 
+    private boolean debugMode = false;
+
     private GameStatus gameStatus = GameStatus.PAUSED;
 
     private long time = 0;
 
     public void newGame() {
+        //setDebugMode(true);
+        setDebugMode(false);
+
         time = 0;
-        listOfHumans.add(new Human(370, 300));
-        listOfHumans.get(0).setState(HumanState.INFECTED);
-        listOfHumans.add(new Human(370, 325));
-        listOfHumans.get(1).setState(HumanState.SICK);
-        listOfHumans.add(new Human(370, 350));
-        listOfHumans.get(2).setState(HumanState.IMMUNE);
-        listOfHumans.add(new Human(370, 375));
-        listOfHumans.get(3).setState(HumanState.DEAD);
+
+        listOfHumans = new ArrayList<>();
+        listOfPlaces = new ArrayList<>();
+        listOfViruses = new ArrayList<>();
+
+        if (isDebugMode()) {
+            listOfHumans.add(new Human(370, 300));
+            listOfHumans.get(0).setState(HumanState.INFECTED);
+            listOfHumans.add(new Human(370, 325));
+            listOfHumans.get(1).setState(HumanState.SICK);
+            listOfHumans.add(new Human(370, 350));
+            listOfHumans.get(2).setState(HumanState.IMMUNE);
+            listOfHumans.add(new Human(370, 375));
+            listOfHumans.get(3).setState(HumanState.DEAD);
+        }
 
         GameSetup.addHumans(listOfHumans);
         GameSetup.addPlaces(listOfPlaces);
+
+        Human humanToBeInfectedTopLeft = findHuman(Area.QUADRANT_TOP_LEFT, 13);
+        humanToBeInfectedTopLeft.setState(HumanState.INFECTED);
+
+        Human humanToBeInfectedTopRight = findHuman(Area.QUADRANT_TOP_RIGHT, 13);
+        humanToBeInfectedTopRight.setState(HumanState.INFECTED);
+
+        Human humanToBeInfectedBottomLeft = findHuman(Area.QUADRANT_BOTTOM_LEFT, 13);
+        humanToBeInfectedBottomLeft.setState(HumanState.INFECTED);
+
+        Human humanToBeInfectedBottomRight = findHuman(Area.QUADRANT_BOTTOM_RIGHT, 13);
+        humanToBeInfectedBottomRight.setState(HumanState.INFECTED);
     }
 
     public void play() {
@@ -53,6 +77,23 @@ public class Game {
             }
         }
         return null;
+    }
+
+    public Human findHuman(Area area, int position) {
+        for (Human human: listOfHumans) {
+            if (human.getPosition() == position && area.equals(human.getArea())) {
+                return human;
+            }
+        }
+        return null;
+    }
+
+    public boolean isDebugMode() {
+        return debugMode;
+    }
+
+    public void setDebugMode(boolean debugMode) {
+        this.debugMode = debugMode;
     }
 
     public GameStatus getGameStatus() {

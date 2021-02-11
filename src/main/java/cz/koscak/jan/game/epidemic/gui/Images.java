@@ -16,7 +16,7 @@ class Images {
 
     Images() {
         try {
-            map = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("map-8.png")));
+            map = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("map-10.png")));
             humanHealthy = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("human-healthy.png")));
             humanInfected = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("human-infected.png")));
             humanSick = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("human-sick.png")));

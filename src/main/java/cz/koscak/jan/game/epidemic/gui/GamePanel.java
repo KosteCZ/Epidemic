@@ -79,10 +79,13 @@ public class GamePanel extends JPanel {
             if (Area.QUADRANT_TOP_RIGHT.equals(place.getArea())) g.setColor(Color.ORANGE);
             if (Area.QUADRANT_BOTTOM_LEFT.equals(place.getArea())) g.setColor(Color.BLUE);
             if (Area.QUADRANT_BOTTOM_RIGHT.equals(place.getArea())) g.setColor(Color.RED);*/
-            g.drawOval(place.getXForPainting(), place.getYForPainting(), 15, 15);
-            g.drawRect(place.getXForPainting(), place.getYForPainting(), 15, 15);
-            g.setColor(Color.RED);
-            g.drawString(String.valueOf(place.getPosition()), place.getXForPainting() + 1 , place.getYForPainting() + 12);
+
+            if (game.isDebugMode()) {
+                g.drawOval(place.getXForPainting(), place.getYForPainting(), 15, 15);
+                g.drawRect(place.getXForPainting(), place.getYForPainting(), 15, 15);
+                g.setColor(Color.RED);
+                g.drawString(String.valueOf(place.getPosition()), place.getXForPainting() + 1, place.getYForPainting() + 12);
+            }
         }
     }
 
@@ -138,18 +141,20 @@ public class GamePanel extends JPanel {
 		g.setColor(Color.RED);
 		g.drawRect(-1, 28/*31*/ /*+ 25*/, 801, 801);
 
-		g.setColor(Color.BLUE);
-		g.drawRect(0, 28 + 0, 399, 399);
-		g.setColor(Color.MAGENTA);
-		g.drawRect(0, 28 + 400, 399, 399);
-		g.setColor(Color.GREEN);
-		g.drawRect(400, 28 + 0, 399, 399);
-		g.setColor(Color.YELLOW);
-		g.drawRect(400, 28 + 400, 399, 399);
-
-		g.drawImage(images.humanHealthy, 420, 300, this);
-		g.drawImage(images.humanSick, 420, 325, this);
-
+        if (game.isDebugMode()) {
+            g.setColor(Color.BLUE);
+            g.drawRect(0, 28 + 0, 399, 399);
+            g.setColor(Color.MAGENTA);
+            g.drawRect(0, 28 + 400, 399, 399);
+            g.setColor(Color.GREEN);
+            g.drawRect(400, 28 + 0, 399, 399);
+            g.setColor(Color.YELLOW);
+            g.drawRect(400, 28 + 400, 399, 399);
+        }
+        if (game.isDebugMode()) {
+            g.drawImage(images.humanHealthy, 420, 300, this);
+            g.drawImage(images.humanSick, 420, 325, this);
+        }
 		/*for (Human human: game.getListOfHumans()) {
 			human.paint(g);
 		}*/

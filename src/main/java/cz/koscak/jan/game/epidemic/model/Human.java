@@ -60,6 +60,14 @@ public class Human {
         return (int) Math.floor(y + 0.5d);
     }
 
+    public Area getArea() {
+        return area;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
     public void setState(HumanState state) {
         if (HumanState.HEALTHY.equals(state)) {
             timeToNextState = -1;
