@@ -1,11 +1,6 @@
 package cz.koscak.jan.game.epidemic.gui;
 
-import cz.koscak.jan.game.epidemic.model.Game;
-import cz.koscak.jan.game.epidemic.model.GameStatus;
-import cz.koscak.jan.game.epidemic.model.Human;
-import cz.koscak.jan.game.epidemic.model.HumanState;
-import cz.koscak.jan.game.epidemic.model.Place;
-import cz.koscak.jan.game.epidemic.model.Virus;
+import cz.koscak.jan.game.epidemic.model.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -80,6 +75,10 @@ public class GamePanel extends JPanel {
         for(Place place: game.getListOfPlaces()) {
             //g.drawImage(images.humanHealthy, place.getXForPainting(), place.getYForPainting(), this);
             g.setColor(Color.BLACK);
+            if (Area.QUADRANT_TOP_LEFT.equals(place.getArea())) g.setColor(Color.GREEN);
+            if (Area.QUADRANT_TOP_RIGHT.equals(place.getArea())) g.setColor(Color.ORANGE);
+            if (Area.QUADRANT_BOTTOM_LEFT.equals(place.getArea())) g.setColor(Color.BLUE);
+            if (Area.QUADRANT_BOTTOM_RIGHT.equals(place.getArea())) g.setColor(Color.RED);
             g.drawOval(place.getXForPainting(), place.getYForPainting(), 15, 15);
             g.drawRect(place.getXForPainting(), place.getYForPainting(), 15, 15);
             g.setColor(Color.RED);

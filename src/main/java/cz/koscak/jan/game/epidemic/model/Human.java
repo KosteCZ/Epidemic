@@ -140,7 +140,7 @@ public class Human {
                     }
                     moving = true;
                 } else {
-                    System.out.println("No place find!!!");
+                    System.out.println("Error: Human moving: No place found!!!");
                 }
             }
         }
