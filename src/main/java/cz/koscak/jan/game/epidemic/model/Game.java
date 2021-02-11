@@ -114,6 +114,8 @@ public class Game {
             }
         }
 */
+
+/*
         // LOWER RIGHT
 //        listOfHumans.add(new Human(470 + 6,       470 + 28 + 9 ));
 //        listOfHumans.add(new Human(470 + 22,      470 + 28 + 9 ));
@@ -160,7 +162,7 @@ public class Game {
         listOfHumans.add(new Human(470 + 14  + 87, 470 + 28 + 9  + 88));
         listOfHumans.add(new Human(470 + 6  + 87, 470 + 28 + 23 + 88));
         listOfHumans.add(new Human(470 + 22 + 87, 470 + 28 + 23 + 88));
-
+*/
 
         // ###################### PLACES ############################
         GameSetup.addPlaces(listOfPlaces);
