@@ -51,7 +51,46 @@ public class Game {
             }
         }*/
         listOfHumans.add(new Human(201 + 6 + 0 * 21, 202 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 1));
+        listOfHumans.add(new Human(201 + 1 + 1 * 21, 202 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 26));
+        listOfHumans.add(new Human(201 + 7 + 2 * 21, 202 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 4));
+        listOfHumans.add(new Human(201 + 2 + 3 * 21, 202 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 5));
+        listOfHumans.add(new Human(201 + 9 + 4 * 21, 202 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 27));
+        listOfHumans.add(new Human(201 + 4 + 5 * 21, 202 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 8));
+
         listOfHumans.add(new Human(201 + 6 + 0 * 21, 218 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 2));
+        listOfHumans.add(new Human(201 + 1 + 1 * 21, 218 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 3));
+        listOfHumans.add(new Human(201 + 7 + 2 * 21, 218 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 6));
+        listOfHumans.add(new Human(201 + 2 + 3 * 21, 218 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 7));
+        listOfHumans.add(new Human(201 + 9 + 4 * 21, 218 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 9));
+        listOfHumans.add(new Human(201 + 4 + 5 * 21, 218 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 10));
+
+        listOfHumans.add(new Human(201 + 6 + 0 * 21, 247 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 11));
+        listOfHumans.add(new Human(201 + 1 + 1 * 21, 247 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 28));
+        listOfHumans.add(new Human(201 + 7 + 2 * 21, 247 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 30));
+        listOfHumans.add(new Human(201 + 2 + 3 * 21, 247 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 31));
+        listOfHumans.add(new Human(201 + 9 + 4 * 21, 247 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 33));
+        listOfHumans.add(new Human(201 + 4 + 5 * 21, 247 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 14));
+
+        listOfHumans.add(new Human(201 + 6 + 0 * 21, 263 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 29));
+        listOfHumans.add(new Human(201 + 1 + 1 * 21, 263 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 12));
+        listOfHumans.add(new Human(201 + 7 + 2 * 21, 263 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 13));
+        listOfHumans.add(new Human(201 + 2 + 3 * 21, 263 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 32));
+        listOfHumans.add(new Human(201 + 9 + 4 * 21, 263 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 15));
+        listOfHumans.add(new Human(201 + 4 + 5 * 21, 263 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 34));
+
+        listOfHumans.add(new Human(201 + 6 + 0 * 21, 291 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 16));
+        listOfHumans.add(new Human(201 + 1 + 1 * 21, 291 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 35));
+        listOfHumans.add(new Human(201 + 7 + 2 * 21, 291 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 19));
+        listOfHumans.add(new Human(201 + 2 + 3 * 21, 291 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 20));
+        listOfHumans.add(new Human(201 + 9 + 4 * 21, 291 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 36));
+        listOfHumans.add(new Human(201 + 4 + 5 * 21, 291 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 23));
+
+        listOfHumans.add(new Human(201 + 6 + 0 * 21, 306 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 17));
+        listOfHumans.add(new Human(201 + 1 + 1 * 21, 306 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 18));
+        listOfHumans.add(new Human(201 + 7 + 2 * 21, 306 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 21));
+        listOfHumans.add(new Human(201 + 2 + 3 * 21, 306 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 22));
+        listOfHumans.add(new Human(201 + 9 + 4 * 21, 306 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 24));
+        listOfHumans.add(new Human(201 + 4 + 5 * 21, 306 + 28 + 6 + 0 * 21, Area.QUADRANT_TOP_LEFT, 25));
 
 
         // UPPER RIGHT
