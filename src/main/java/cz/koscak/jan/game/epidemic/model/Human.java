@@ -19,6 +19,8 @@ public class Human {
     private int position = 0;
     private boolean moving = false;
     private Place targetPlace;
+    private boolean faceMask = false;
+    private boolean protesting = false;
 
     public Human(double x, double y) {
         this.x = x;
@@ -66,6 +68,22 @@ public class Human {
 
     public int getPosition() {
         return position;
+    }
+
+    public boolean hasFaceMask() {
+        return faceMask;
+    }
+
+    public void setFaceMask(boolean hasFaceMask) {
+        this.faceMask = hasFaceMask;
+    }
+
+    public boolean isProtesting() {
+        return protesting;
+    }
+
+    public void setProtesting(boolean protesting) {
+        this.protesting = protesting;
     }
 
     public void setState(HumanState state) {

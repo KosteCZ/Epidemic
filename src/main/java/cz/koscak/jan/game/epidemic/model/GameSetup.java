@@ -16,6 +16,7 @@ public class GameSetup {
         addPlacesTopRight(listOfPlaces);
         addPlacesBottomLeft(listOfPlaces);
         addPlacesBottomRight(listOfPlaces);
+        addPlacesMiddle(listOfPlaces);
     }
 
     private static void addHumansTopLeft(List<Human> listOfHumans) {
@@ -1448,4 +1449,80 @@ public class GameSetup {
         listOfPlaces.add(new Place(474 + 5 * 21, 28 + 669 + 5 + 5 * 21,
                 PlaceType.SPORT, Area.QUADRANT_BOTTOM_RIGHT, 22));
     }
+
+    private static void addPlacesMiddle(List<Place> listOfPlaces) {
+        listOfPlaces.add(new Place(335 + 6 + 0 * 21, 28 + 332 + 5 + 0 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 35));
+        listOfPlaces.add(new Place(337 + 1 + 1 * 21, 28 + 332 + 5 + 0 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 31));
+        listOfPlaces.add(new Place(331 + 7 + 2 * 21, 28 + 332 + 5 + 0 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 25));
+        listOfPlaces.add(new Place(333 + 2 + 3 * 21, 28 + 332 + 5 + 0 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 18));
+        listOfPlaces.add(new Place(324 + 9 + 4 * 21, 28 + 332 + 5 + 0 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 15));
+        listOfPlaces.add(new Place(328 + 4 + 5 * 21, 28 + 332 + 5 + 0 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 13));
+        listOfPlaces.add(new Place(335 + 6 + 0 * 21, 28 + 332 + 5 + 1 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 33));
+        listOfPlaces.add(new Place(337 + 1 + 1 * 21, 28 + 332 + 5 + 1 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 27));
+        listOfPlaces.add(new Place(331 + 7 + 2 * 21, 28 + 332 + 5 + 1 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 19));
+        listOfPlaces.add(new Place(333 + 2 + 3 * 21, 28 + 332 + 5 + 1 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 9));
+        listOfPlaces.add(new Place(322 + 9 + 4 * 21, 28 + 332 + 5 + 1 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 5));
+        listOfPlaces.add(new Place(331 + 4 + 5 * 21, 28 + 332 + 3 + 1 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 17));
+        listOfPlaces.add(new Place(335 + 6 + 0 * 21, 28 + 332 + 5 + 2 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 29));
+        listOfPlaces.add(new Place(337 + 1 + 1 * 21, 28 + 332 + 5 + 2 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 20));
+        listOfPlaces.add(new Place(331 + 7 + 2 * 21, 28 + 332 + 5 + 2 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 10));
+        listOfPlaces.add(new Place(333 + 2 + 3 * 21, 28 + 332 + 5 + 2 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 7));
+        listOfPlaces.add(new Place(322 + 9 + 4 * 21, 28 + 332 + 5 + 2 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 2));
+        listOfPlaces.add(new Place(331 + 4 + 5 * 21, 28 + 332 + 3 + 2 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 1));
+        listOfPlaces.add(new Place(335 + 6 + 0 * 21, 28 + 332 + 5 + 3 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 30));
+        listOfPlaces.add(new Place(337 + 1 + 1 * 21, 28 + 332 + 5 + 3 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 21));
+        listOfPlaces.add(new Place(331 + 7 + 2 * 21, 28 + 332 + 5 + 3 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 11));
+        listOfPlaces.add(new Place(333 + 2 + 3 * 21, 28 + 332 + 5 + 3 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 8));
+        listOfPlaces.add(new Place(322 + 9 + 4 * 21, 28 + 332 + 5 + 3 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 3));
+        listOfPlaces.add(new Place(331 + 4 + 5 * 21, 28 + 332 + 3 + 3 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 4));
+        listOfPlaces.add(new Place(335 + 6 + 0 * 21, 28 + 332 + 5 + 4 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 34));
+        listOfPlaces.add(new Place(337 + 1 + 1 * 21, 28 + 332 + 5 + 4 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 28));
+        listOfPlaces.add(new Place(331 + 7 + 2 * 21, 28 + 332 + 5 + 4 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 22));
+        listOfPlaces.add(new Place(333 + 2 + 3 * 21, 28 + 332 + 5 + 4 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 12));
+        listOfPlaces.add(new Place(322 + 9 + 4 * 21, 28 + 332 + 5 + 4 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 6));
+        listOfPlaces.add(new Place(331 + 4 + 5 * 21, 28 + 332 + 3 + 4 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 23));
+        listOfPlaces.add(new Place(335 + 6 + 0 * 21, 28 + 332 + 5 + 5 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 36));
+        listOfPlaces.add(new Place(337 + 1 + 1 * 21, 28 + 332 + 5 + 5 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 32));
+        listOfPlaces.add(new Place(331 + 7 + 2 * 21, 28 + 332 + 5 + 5 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 26));
+        listOfPlaces.add(new Place(333 + 2 + 3 * 21, 28 + 332 + 5 + 5 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 24));
+        listOfPlaces.add(new Place(324 + 9 + 4 * 21, 28 + 332 + 5 + 5 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 16));
+        listOfPlaces.add(new Place(328 + 4 + 5 * 21, 28 + 332 + 5 + 5 * 21,
+                PlaceType.PROTEST_PLACE, Area.QUADRANT_BOTTOM_RIGHT, 14));
+    }
+
 }

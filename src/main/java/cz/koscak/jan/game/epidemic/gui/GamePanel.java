@@ -202,6 +202,14 @@ public class GamePanel extends JPanel {
                 g.setColor(Color.BLACK);
                 g.drawRect(human.getIntX(), human.getIntY(), 16, 16);
             }
+            // Face mask
+            if (human.hasFaceMask() && !HumanState.DEAD.equals(human.getState())) {
+                g.drawImage(images.humanFaceMask, human.getIntX(), human.getIntY(), this);
+            }
+            // Protest sign
+            if (human.isProtesting() && !HumanState.DEAD.equals(human.getState())) {
+                g.drawImage(images.humanProtestSign, human.getIntX(), human.getIntY(), this);
+            }
         }
 
         g.setColor(Color.RED);
@@ -224,7 +232,9 @@ public class GamePanel extends JPanel {
 		//g.setColor(Color.LIGHT_GRAY);
 		//g.fillRect(7, 30, 786, 763);
 
-		g.drawImage(images.map, 0, 28, this);
+        g.drawImage(images.map, 0, 28, this);
+        g.drawImage(images.workClosed, 0, 28, this);
+        g.drawImage(images.shopClosed, 0, 28, this);
 
 		g.setColor(Color.BLACK);
 		g.drawString("Speed: " + game.getSpeedForUI(), STRING_SPEED_POSITION_X, 21);
@@ -233,6 +243,18 @@ public class GamePanel extends JPanel {
         g.drawString("Time: " + game.getTime(), STRING_TIME_POSITION_X, 21);
 		g.setColor(Color.BLACK);
 		g.drawRect(-1, 28/*31*/ /*+ 25*/, 801, 801);
+
+        if (game.isDebugMode()) {
+            g.drawImage(images.humanHealthy, 380, 28 + 22, this);
+            g.drawImage(images.humanFaceMask, 380, 28 + 22, this);
+
+            g.drawImage(images.humanHealthy, 400, 28 + 22, this);
+            g.drawImage(images.humanProtestSign, 400, 28 + 22, this);
+
+            g.drawImage(images.humanHealthy, 420, 28 + 22, this);
+            g.drawImage(images.humanFaceMask, 420, 28 + 22, this);
+            g.drawImage(images.humanProtestSign, 420, 28 + 22, this);
+        }
 
         if (game.isDebugMode()) {
             g.setColor(Color.BLUE);
@@ -245,8 +267,11 @@ public class GamePanel extends JPanel {
             g.drawRect(400, 28 + 400, 399, 399);
         }
         if (game.isDebugMode()) {
-            g.drawImage(images.humanHealthy, 420, 300, this);
-            g.drawImage(images.humanSick, 420, 325, this);
+            g.drawImage(images.humanHealthy, 420, 225, this);
+            g.drawImage(images.humanInfected, 420, 250, this);
+            g.drawImage(images.humanSick, 420, 275, this);
+            g.drawImage(images.humanImmune, 420, 300, this);
+            g.drawImage(images.humanDead, 420, 325, this);
         }
 		/*for (Human human: game.getListOfHumans()) {
 			human.paint(g);
