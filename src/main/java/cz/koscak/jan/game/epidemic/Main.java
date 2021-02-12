@@ -26,7 +26,7 @@ public class Main {
                 while (true) {
                     gameFrame.repaint();
                     //game.play();
-                    Thread.sleep(50 /*100*/);
+                    Thread.sleep(50);
                 }
             } catch (InterruptedException exception) {
                 System.err.println("ERROR: " + exception.getMessage());
@@ -39,7 +39,7 @@ public class Main {
                 while (true) {
                     //gameFrame.repaint();
                     game.play();
-                    Thread.sleep(20 /*10*/);
+                    Thread.sleep(game.getSpeedDelay());
                 }
             } catch (InterruptedException exception) {
                 System.err.println("ERROR: " + exception.getMessage());

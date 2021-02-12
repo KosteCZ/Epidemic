@@ -6,6 +6,7 @@ import java.util.ListIterator;
 
 public class Game {
 
+    private static final int GAME_SPEED_DELAY_DEFAULT = 80;
     private static final List<Area> LIST_OF_QUADRANTS = List.of(Area.QUADRANT_TOP_LEFT, Area.QUADRANT_TOP_RIGHT,
             Area.QUADRANT_BOTTOM_RIGHT, Area.QUADRANT_BOTTOM_LEFT);
 
@@ -18,6 +19,7 @@ public class Game {
     private GameStatus gameStatus = GameStatus.PAUSED;
 
     private long time = 0;
+    private int speed = 2;
 
     public void newGame() {
         //setDebugMode(true);
@@ -100,6 +102,15 @@ public class Game {
         return null;
     }
 
+    public int getSpeedDelay() {
+        return GAME_SPEED_DELAY_DEFAULT / ((int) Math.pow(2, speed));
+    }
+
+    public String getSpeedForUI() {
+        if (speed > 1) return "  " + (speed - 1);
+        return "0.5";
+    }
+
     public Area getAreaForNumber(int number) {
         return LIST_OF_QUADRANTS.get((number + 4) % 4);
     }
@@ -140,4 +151,11 @@ public class Game {
         return time;
     }
 
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
 }

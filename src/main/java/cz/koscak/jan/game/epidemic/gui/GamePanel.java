@@ -4,15 +4,28 @@ import cz.koscak.jan.game.epidemic.model.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.AdjustmentListener;
 import java.util.ConcurrentModificationException;
 import java.util.ListIterator;
 
 public class GamePanel extends JPanel {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
+    private static final int BUTTON_NEW_GAME_POSITION_X = 0;
+    private static final int BUTTON_PAUSE_POSITION_X = 100;
+    private static final int STRING_SPEED_POSITION_X = 200;
+    private static final int SCROLL_BAR_SPEED_OF_GAME_POSITION_X = 270;
+    private static final int STRING_PES_POSITION_X = 400;
+    private static final int STRING_DEATHS_POSITION_X = 500;
+    private static final int STRING_TIME_POSITION_X = 600;
+    private static final int STRING_SCROLL_BAR_SPEED_OF_GAME_POSITION_X = 338;
 
-	private final Game game;
+    private final Game game;
 	private Images images;
+
+    private JScrollBar scrollBarSpeedOfGame = new JScrollBar();
+    private JButton buttonNewGame;
+    private JButton buttonPause;
 
 //	private static final int HEIGHT = 800;
 //	private static final int WIDTH = 800;
@@ -32,24 +45,65 @@ public class GamePanel extends JPanel {
 
 		//System.out.println("Panel Size: " + getSize());
 
+        addNewGameButton();
 		addPauseButton();
+        addSpeedOfGameScrollBar();
 
-		images = new Images();
+        images = new Images();
 	}
 
-	private void addPauseButton() {
-		JButton buttonPause = new JButton("Resume");
-		buttonPause.setBounds(0, 1, 90, 28);
+    private void addSpeedOfGameScrollBar() {
+        scrollBarSpeedOfGame.setBounds(SCROLL_BAR_SPEED_OF_GAME_POSITION_X, 1, 90, 28);
+        scrollBarSpeedOfGame.setOrientation(JScrollBar.HORIZONTAL);
+        scrollBarSpeedOfGame.setMinimum(1);
+        scrollBarSpeedOfGame.setMaximum(7);
+        scrollBarSpeedOfGame.setVisibleAmount(2);
+        scrollBarSpeedOfGame.setValue(game.getSpeed());
+        scrollBarSpeedOfGame.setUnitIncrement(1);
+        scrollBarSpeedOfGame.setBlockIncrement(1);
+        scrollBarSpeedOfGame.setEnabled(true);
+
+        AdjustmentListener listener = event -> {
+            Adjustable source = event.getAdjustable();
+            if (event.getValueIsAdjusting()) {
+                game.setSpeed(source.getValue());
+                //System.out.println("New scrollbar speed value: " + source.getValue());
+                return;
+            }
+            game.setSpeed(source.getValue());
+            //System.out.println("New scrollbar speed value: " + source.getValue());
+        };
+
+        scrollBarSpeedOfGame.addAdjustmentListener(listener);
+        add(scrollBarSpeedOfGame);
+    }
+
+    private void addNewGameButton() {
+        buttonNewGame = new JButton("New game");
+        buttonNewGame.setBounds(BUTTON_NEW_GAME_POSITION_X, 1, 100, 28);
+
+        buttonNewGame.addActionListener(event -> {
+            //game.setGameStatus();
+            buttonPause.setEnabled(true);
+            game.newGame();
+        });
+
+        add(buttonNewGame);
+    }
+    private void addPauseButton() {
+        buttonPause = new JButton("Resume");
+        buttonPause.setBounds(BUTTON_PAUSE_POSITION_X, 1, 90, 28);
 
 		buttonPause.addActionListener(event -> {
             GameStatus gameStatus = game.getGameStatus();
             if (GameStatus.PLAY.equals(gameStatus)) {
                 game.setGameStatus(GameStatus.PAUSED);
                 buttonPause.setText("Resume");
-            }
-            if (GameStatus.PAUSED.equals(gameStatus)) {
+            } else if (GameStatus.PAUSED.equals(gameStatus)) {
                 game.setGameStatus(GameStatus.PLAY);
                 buttonPause.setText("Pause");
+            } else {
+                buttonPause.setEnabled(false);
             }
         });
 
@@ -70,8 +124,28 @@ public class GamePanel extends JPanel {
 
 		paintHumans(g2);
 
-		paintEndOfGame(g2);
+		g.setColor(Color.BLACK);
+
+		if (game.isDebugMode()) {
+            g.drawString("Scrollbar: " + scrollBarSpeedOfGame.getValue(),
+                    STRING_SCROLL_BAR_SPEED_OF_GAME_POSITION_X, 28 + 15);
+        }
+
+        checkStateOfGame(g2);
 	}
+
+    private void checkStateOfGame(Graphics2D g2) {
+        paintEndOfGame(g2);
+        modifyUIBasedOnGameState();
+    }
+
+    private void modifyUIBasedOnGameState() {
+        if (game.getGameStatus().equals(GameStatus.PLAY) || game.getGameStatus().equals(GameStatus.PAUSED)) {
+            buttonPause.setEnabled(true);
+        } else {
+            buttonPause.setEnabled(false);
+        }
+    }
 
     private void paintEndOfGame(Graphics2D g) {
 	    if (game.getGameStatus().equals(GameStatus.VICTORY) || game.getGameStatus().equals(GameStatus.DEFEAT)) {
@@ -155,11 +229,11 @@ public class GamePanel extends JPanel {
 		g.drawImage(images.map, 0, 28, this);
 
 		g.setColor(Color.BLACK);
-		g.drawString("Speed: (PAUSED, 1, 2, 4)", 100, 21);
-		g.drawString("PES: (0-5)", 300, 21);
-        g.drawString("Deaths: (0-100)", 400, 21);
-        g.drawString("Time: " + game.getTime(), 500, 21);
-		g.setColor(Color.RED);
+		g.drawString("Speed: " + game.getSpeedForUI(), STRING_SPEED_POSITION_X, 21);
+		g.drawString("PES: (0-5)", STRING_PES_POSITION_X, 21);
+        g.drawString("Deaths: (0-100)", STRING_DEATHS_POSITION_X, 21);
+        g.drawString("Time: " + game.getTime(), STRING_TIME_POSITION_X, 21);
+		g.setColor(Color.BLACK);
 		g.drawRect(-1, 28/*31*/ /*+ 25*/, 801, 801);
 
         if (game.isDebugMode()) {
