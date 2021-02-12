@@ -69,7 +69,28 @@ public class GamePanel extends JPanel {
 		paintPlaces(g2);
 
 		paintHumans(g2);
+
+		paintEndOfGame(g2);
 	}
+
+    private void paintEndOfGame(Graphics2D g) {
+	    if (game.getGameStatus().equals(GameStatus.VICTORY) || game.getGameStatus().equals(GameStatus.DEFEAT)) {
+            g.setColor(Color.LIGHT_GRAY);
+            g.fillRect(320, 28 + 370, 160, 60);
+            g.setColor(Color.BLACK);
+            g.drawRect(320, 28 + 370, 160, 60);
+            g.setColor(Color.BLACK);
+            Font originalFont = g.getFont();
+            Font newFont = originalFont.deriveFont(originalFont.getSize() * 2.0F);
+            g.setFont(newFont);
+            if (game.getGameStatus().equals(GameStatus.VICTORY)) {
+                g.drawString("VICTORY!!!", 338, 28 + 409);
+            } else if (game.getGameStatus().equals(GameStatus.DEFEAT)) {
+                g.drawString("DEFEAT!!!", 342, 28 + 409);
+            }
+            g.setFont(originalFont);
+        }
+    }
 
     private void paintPlaces(Graphics g) {
         for(Place place: game.getListOfPlaces()) {

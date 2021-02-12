@@ -6,6 +6,9 @@ import java.util.ListIterator;
 
 public class Game {
 
+    private static final List<Area> LIST_OF_QUADRANTS = List.of(Area.QUADRANT_TOP_LEFT, Area.QUADRANT_TOP_RIGHT,
+            Area.QUADRANT_BOTTOM_RIGHT, Area.QUADRANT_BOTTOM_LEFT);
+
     private List<Human> listOfHumans = new ArrayList<>();
     private List<Place> listOfPlaces = new ArrayList<>();
     private List<Virus> listOfViruses = new ArrayList<>();
@@ -54,7 +57,7 @@ public class Game {
     }
 
     public void play() {
-        if (GameStatus.PAUSED.equals(gameStatus)) {
+        if (!GameStatus.PLAY.equals(gameStatus)) {
             return;
         }
         time = time + 1;
@@ -68,6 +71,15 @@ public class Game {
                 iteratorVirus.remove();
             }
         }
+
+        checkVictoryCondition();
+    }
+
+    private void checkVictoryCondition() {
+        for (Human human: listOfHumans) {
+            if (!HumanState.HEALTHY.equals(human.getState())) return;
+        }
+        gameStatus = GameStatus.VICTORY;
     }
 
     public Place findPlace(Area area, PlaceType placeType, int position) {
@@ -86,6 +98,14 @@ public class Game {
             }
         }
         return null;
+    }
+
+    public Area getAreaForNumber(int number) {
+        return LIST_OF_QUADRANTS.get((number + 4) % 4);
+    }
+
+    public int getNumberOfArea(Area area) {
+        return LIST_OF_QUADRANTS.indexOf(area);
     }
 
     public boolean isDebugMode() {

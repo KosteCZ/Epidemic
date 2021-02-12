@@ -109,35 +109,54 @@ public class Human {
     private void move(Game game) {
         if (moving == false && timeToNextMove == 0) {
             if (position > 0) {
-                Random random = new Random();
-                int randomNumber = random.nextInt(4);
-                System.out.print("Random: " + randomNumber + ". ");
                 PlaceType targetPlaceType = PlaceType.HOME;
-                if (randomNumber == 0) {
-                    System.out.println("Going to " + PlaceType.HOME);
-                    targetPlaceType = PlaceType.HOME;
-                } else if (randomNumber == 1) {
-                    System.out.println("Going to " + PlaceType.WORK);
-                    targetPlaceType = PlaceType.WORK;
-                } else if (randomNumber == 2) {
-                    System.out.println("Going to " + PlaceType.SHOP);
-                    targetPlaceType = PlaceType.SHOP;
-                } else if (randomNumber == 3) {
-                    System.out.println("Going to " + PlaceType.SPORT);
-                    targetPlaceType = PlaceType.SPORT;
+                Area targetArea = area;
+                int targetPosition = position;
+                Random random = new Random();
+
+                int randomNumberFarMovement = random.nextInt(50);
+                if ((randomNumberFarMovement == 0) && (position % 2 == 0) && (position <= 22)) {
+                    if (game.isDebugMode()) System.out.print("SPECIAL MOVE: Human position: " + position + " area: " + area);
+                    if (position % 4 == 0) {
+                        targetArea = game.getAreaForNumber(game.getNumberOfArea(area) - 1);
+                    } else {
+                        targetArea = game.getAreaForNumber(game.getNumberOfArea(area) + 1);
+                    }
+                    targetPosition = 25 + (position / 2);
+                    if (game.isDebugMode()) System.out.println(" , moving to position: " + targetPosition + " in area: " + targetArea);
+                } else {
+                    int randomNumber = random.nextInt(4);
+                    if (game.isDebugMode()) System.out.print("Random: " + randomNumber + ". ");
+                    if (randomNumber == 0) {
+                        if (game.isDebugMode()) System.out.println("Going to " + PlaceType.HOME);
+                        targetPlaceType = PlaceType.HOME;
+                    } else if (randomNumber == 1) {
+                        if (game.isDebugMode()) System.out.println("Going to " + PlaceType.WORK);
+                        targetPlaceType = PlaceType.WORK;
+                    } else if (randomNumber == 2) {
+                        if (game.isDebugMode()) System.out.println("Going to " + PlaceType.SHOP);
+                        targetPlaceType = PlaceType.SHOP;
+                    } else if (randomNumber == 3) {
+                        if (game.isDebugMode()) System.out.println("Going to " + PlaceType.SPORT);
+                        targetPlaceType = PlaceType.SPORT;
+                    }
                 }
                 timeToNextMove = 50;
 
-                targetPlace = game.findPlace(area, targetPlaceType, position);
+                targetPlace = game.findPlace(targetArea, targetPlaceType, targetPosition);
                 if(targetPlace != null) {
-                    System.out.println("Area: " + targetPlace.getArea() + ", type: " + targetPlace.getType()
-                            + ", position: " + targetPlace.getPosition() + ", x:" + targetPlace.getXForHuman() + ", y:" + targetPlace.getYForHuman());
-                    System.out.println("x: " + x + ", y: " + y);
+                    if (game.isDebugMode()) {
+                        System.out.println("Area: " + targetPlace.getArea() + ", type: " + targetPlace.getType()
+                                + ", position: " + targetPlace.getPosition() + ", x:" + targetPlace.getXForHuman() + ", y:" + targetPlace.getYForHuman());
+                        System.out.println("x: " + x + ", y: " + y);
+                    }
 
                     // Set moving to that target
                     double x_difference = targetPlace.getXForHuman() - x;
                     double y_difference = targetPlace.getYForHuman() - y;
-                    System.out.println("Difference: " + (x_difference + y_difference));
+                    if (game.isDebugMode()) {
+                        System.out.println("Difference: " + (x_difference + y_difference));
+                    }
                     double z_difference = Math.sqrt((x_difference * x_difference) + (y_difference * y_difference));
                     if (z_difference != 0) {
                         this.vx = x_difference / z_difference;
