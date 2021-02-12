@@ -102,8 +102,6 @@ public class GamePanel extends JPanel {
             } else if (GameStatus.PAUSED.equals(gameStatus)) {
                 game.setGameStatus(GameStatus.PLAY);
                 buttonPause.setText("Pause");
-            } else {
-                buttonPause.setEnabled(false);
             }
         });
 
@@ -230,8 +228,8 @@ public class GamePanel extends JPanel {
 
 		g.setColor(Color.BLACK);
 		g.drawString("Speed: " + game.getSpeedForUI(), STRING_SPEED_POSITION_X, 21);
-		g.drawString("PES: (0-5)", STRING_PES_POSITION_X, 21);
-        g.drawString("Deaths: (0-100)", STRING_DEATHS_POSITION_X, 21);
+		g.drawString("PES: 0/5", STRING_PES_POSITION_X, 21);
+        g.drawString("Deaths: 0/100", STRING_DEATHS_POSITION_X, 21);
         g.drawString("Time: " + game.getTime(), STRING_TIME_POSITION_X, 21);
 		g.setColor(Color.BLACK);
 		g.drawRect(-1, 28/*31*/ /*+ 25*/, 801, 801);

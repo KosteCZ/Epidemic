@@ -31,6 +31,10 @@ public class Game {
         listOfPlaces = new ArrayList<>();
         listOfViruses = new ArrayList<>();
 
+        if (!(GameStatus.PLAY.equals(gameStatus) || GameStatus.PAUSED.equals(gameStatus))) {
+            gameStatus = GameStatus.PAUSED;
+        }
+
         if (isDebugMode()) {
             listOfHumans.add(new Human(370, 300));
             listOfHumans.get(0).setState(HumanState.INFECTED);
