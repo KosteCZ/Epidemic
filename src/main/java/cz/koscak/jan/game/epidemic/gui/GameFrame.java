@@ -32,7 +32,7 @@ public class GameFrame extends JFrame {
 
 		setVisible(true);
 
-		System.out.println("Frame Size: " + getSize());
+		if (game.isDebugMode()) System.out.println("Frame Size: " + getSize());
 	}
 
 }
