@@ -15,7 +15,8 @@ public class GamePanel extends JPanel {
     private static final int BUTTON_PAUSE_POSITION_X = 100;
     private static final int STRING_SPEED_POSITION_X = 200;
     private static final int SCROLL_BAR_SPEED_OF_GAME_POSITION_X = 270;
-    private static final int STRING_PES_POSITION_X = 400;
+    private static final int STRING_PES_POSITION_X = 370;
+    private static final int STRING_SICK_POSITION_X = 430;
     private static final int STRING_DEATHS_POSITION_X = 500;
     private static final int STRING_TIME_POSITION_X = 600;
     private static final int STRING_SCROLL_BAR_SPEED_OF_GAME_POSITION_X = 338;
@@ -233,12 +234,17 @@ public class GamePanel extends JPanel {
 		//g.fillRect(7, 30, 786, 763);
 
         g.drawImage(images.map, 0, 28, this);
-        g.drawImage(images.workClosed, 0, 28, this);
-        g.drawImage(images.shopClosed, 0, 28, this);
+        if (game.getPes() >= 1) {
+            g.drawImage(images.workClosed, 0, 28, this);
+        }
+        if (game.getPes() >= 5) {
+            g.drawImage(images.shopClosed, 0, 28, this);
+        }
 
 		g.setColor(Color.BLACK);
 		g.drawString("Speed: " + game.getSpeedForUI(), STRING_SPEED_POSITION_X, 21);
-		g.drawString("PES: 0/5", STRING_PES_POSITION_X, 21);
+        g.drawString("PES: " + game.getPes() + "/5", STRING_PES_POSITION_X, 21);
+        g.drawString("Sick: " + game.getInfectedOrSick() + "/100", STRING_SICK_POSITION_X, 21);
         g.drawString("Deaths: 0/100", STRING_DEATHS_POSITION_X, 21);
         g.drawString("Time: " + game.getTime(), STRING_TIME_POSITION_X, 21);
 		g.setColor(Color.BLACK);

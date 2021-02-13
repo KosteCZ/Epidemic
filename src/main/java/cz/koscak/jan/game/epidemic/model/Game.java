@@ -20,12 +20,16 @@ public class Game {
 
     private long time = 0;
     private int speed = 2;
+    private int infectedOrSick = 0;
+    private int pes = 0; // Epidemic level 0-5
 
     public void newGame() {
-        setDebugMode(true);
-        //setDebugMode(false);
+        //setDebugMode(true);
+        setDebugMode(false);
 
         time = 0;
+        infectedOrSick = 0;
+        pes = 0;
 
         listOfHumans = new ArrayList<>();
         listOfPlaces = new ArrayList<>();
@@ -60,6 +64,8 @@ public class Game {
 
         Human humanToBeInfectedBottomRight = findHuman(Area.QUADRANT_BOTTOM_RIGHT, 13);
         humanToBeInfectedBottomRight.setState(HumanState.INFECTED);
+
+        updateInfectedOrSickCountAndUpdatePes();
     }
 
     public void play() {
@@ -71,14 +77,44 @@ public class Game {
         for (Human human: listOfHumans) {
             human.doAction(this, time, listOfViruses);
         }
+
+        spreadVirusAndRemoveOld();
+
+        updateInfectedOrSickCountAndUpdatePes();
+
+        checkVictoryCondition();
+    }
+
+    private void spreadVirusAndRemoveOld() {
         ListIterator<Virus> iteratorVirus = listOfViruses.listIterator();
         while(iteratorVirus.hasNext()){
             if(iteratorVirus.next().doAction(listOfHumans) == false){
                 iteratorVirus.remove();
             }
         }
+    }
 
-        checkVictoryCondition();
+    private void updateInfectedOrSickCountAndUpdatePes() {
+        int currentlyInfectedOrSick = 0;
+        for (Human human: listOfHumans) {
+            if (HumanState.INFECTED.equals(human.getState()) || HumanState.SICK.equals(human.getState())) {
+                currentlyInfectedOrSick = currentlyInfectedOrSick + 1;
+            }
+        }
+        infectedOrSick = currentlyInfectedOrSick;
+        if (infectedOrSick <= 10) {
+            pes = 0;
+        } else if (infectedOrSick <= 20) {
+            pes = 1;
+        } else if (infectedOrSick <= 30) {
+            pes = 2;
+        } else if (infectedOrSick <= 40) {
+            pes = 3;
+        } else if (infectedOrSick <= 50) {
+            pes = 4;
+        } else {
+            pes = 5;
+        }
     }
 
     private void checkVictoryCondition() {
@@ -161,5 +197,13 @@ public class Game {
 
     public void setSpeed(int speed) {
         this.speed = speed;
+    }
+
+    public int getInfectedOrSick() {
+        return infectedOrSick;
+    }
+
+    public int getPes() {
+        return pes;
     }
 }

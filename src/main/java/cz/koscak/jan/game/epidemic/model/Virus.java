@@ -6,15 +6,19 @@ public class Virus {
 
     public static final int MOUTH_X = 5;
     public static final int MOUTH_Y = 7;
+    public static final int TIME_OF_SPREADING_FULL = 70;
+    public static final int TIME_OF_SPREADING_LIMITED = 40;
+    public static final int TIME_OF_SPREADING_VERY_LIMITED = 20;
 
     private double x, y;
-    private int timeToDeath = 80; //30;
+    private int timeToDeath;
     private double angle; // in radians - makes math easier
 
-    public Virus(double x, double y) {
+    public Virus(double x, double y, int timeOfSpreading) {
         this.x = x;
         this.y = y;
         angle = Math.PI * 2 * Math.random(); // Math.PI * 2 = 360 degrees
+        timeToDeath = timeOfSpreading;
     }
 
     public boolean doAction(List<Human> listOfHumans) {
@@ -23,9 +27,12 @@ public class Virus {
         y = y + Math.cos(angle);
 
         for (Human human: listOfHumans) {
-            if (HumanState.HEALTHY.equals(human.getState())) {
-                if (human.getIntX() + MOUTH_X == getIntX() && human.getIntY() + MOUTH_Y == getIntY()) {
+            if (human.getIntX() + MOUTH_X == getIntX() && human.getIntY() + MOUTH_Y == getIntY()) {
+                if (HumanState.HEALTHY.equals(human.getState())) {
                     human.infect();
+                    return false;
+                } else if (HumanState.SICK.equals(human.getState())) {
+                    human.prolongSickness();
                     return false;
                 }
             }

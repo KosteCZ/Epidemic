@@ -6,7 +6,7 @@ import java.util.Random;
 public class Human {
 
     //private static final int UI_SIZE = 16;
-    private static final int DURATION_OF_INFECTED_STATE = 200;
+    private static final int DURATION_OF_INFECTED_STATE = 250;
     private static final int DURATION_OF_SICK_STATE = 500;
     private static final int DURATION_OF_IMMUNE_STATE = 500;
 
@@ -126,6 +126,11 @@ public class Human {
 
     private void move(Game game) {
         if (moving == false && timeToNextMove == 0) {
+            if (targetPlace != null && PlaceType.HOME.equals(targetPlace.getType()) && HumanState.SICK.equals(state)) {
+                setFaceMask(true);
+                return;
+            }
+
             if (position > 0) {
                 PlaceType targetPlaceType = PlaceType.HOME;
                 Area targetArea = area;
@@ -194,12 +199,28 @@ public class Human {
             timeToNextMove = timeToNextMove - 1;
         }
         if (moving == true) {
+            if (game.getPes() >= 2) {
+                setFaceMask(true);
+            } else {
+                setFaceMask(false);
+            }
             x = x + vx;
             y = y + vy;
             if (targetPlace.getXForHuman() == getIntX() && targetPlace.getYForHuman() == getIntY()) {
                 x = targetPlace.getXForHuman();
                 y = targetPlace.getYForHuman();
                 moving = false;
+                if (PlaceType.SHOP.equals(targetPlace.getType())) {
+                    if (game.getPes() >= 3) {
+                        setFaceMask(true);
+                    } else {
+                        setFaceMask(false);
+                    }
+                } else if (PlaceType.HOME.equals(targetPlace.getType()) && HumanState.SICK.equals(state)) {
+                    setFaceMask(true);
+                } else {
+                    setFaceMask(false);
+                }
             }
         }
     }
@@ -207,7 +228,17 @@ public class Human {
     private void produceVirus(long time, List<Virus> listOfViruses) {
         if (HumanState.INFECTED.equals(state) || HumanState.SICK.equals(state)) {
             if (time % 5 == 0) {
-                listOfViruses.add(new Virus(x + Virus.MOUTH_X, y + Virus.MOUTH_Y));
+                if (moving == false && PlaceType.HOME.equals(targetPlace.getType())) {
+                    if (time % 20 == 0) {
+                        listOfViruses.add(new Virus(x + Virus.MOUTH_X, y + Virus.MOUTH_Y, Virus.TIME_OF_SPREADING_VERY_LIMITED));
+                    }
+                } else {
+                    if (hasFaceMask()) {
+                        listOfViruses.add(new Virus(x + Virus.MOUTH_X, y + Virus.MOUTH_Y, Virus.TIME_OF_SPREADING_LIMITED));
+                    } else {
+                        listOfViruses.add(new Virus(x + Virus.MOUTH_X, y + Virus.MOUTH_Y, Virus.TIME_OF_SPREADING_FULL));
+                    }
+                }
             }
         }
     }
@@ -215,6 +246,13 @@ public class Human {
     public void infect() {
         setState(HumanState.INFECTED);
         timeToNextState = DURATION_OF_INFECTED_STATE;
+    }
+
+    public void prolongSickness() {
+        timeToNextState = timeToNextState + (DURATION_OF_INFECTED_STATE / 2);
+        if (timeToNextState > DURATION_OF_INFECTED_STATE * 2) {
+            timeToNextState = DURATION_OF_INFECTED_STATE * 2;
+        }
     }
 
     /*public void paint(Graphics g) {
