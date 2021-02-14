@@ -20,6 +20,7 @@ public class GamePanel extends JPanel {
     private static final int STRING_DEATHS_POSITION_X = 500;
     private static final int STRING_TIME_POSITION_X = 600;
     private static final int STRING_SCROLL_BAR_SPEED_OF_GAME_POSITION_X = 338;
+    private static final int STRING_MORALE_POSITION_X = 700;
 
     private final Game game;
 	private Images images;
@@ -253,10 +254,11 @@ public class GamePanel extends JPanel {
                 + "/" + /*"100"*/ (game.getAllHumansCount() - game.getDead()), STRING_SICK_POSITION_X, 21);
         g.drawString("Deaths: " + game.getDead() + "/10", STRING_DEATHS_POSITION_X, 21);
         g.drawString("Time: " + game.getTime(), STRING_TIME_POSITION_X, 21);
+        g.drawString("Morale: " + (100 - (((game.getPes() >= 2 ? game.getPes() : 2) - 2) * 15)
+                - (game.getDead() * 5)), STRING_MORALE_POSITION_X, 21);
 		g.setColor(Color.BLACK);
 		g.drawRect(-1, 28/*31*/ /*+ 25*/, 801, 801);
 
-        g.drawString("Chance for protest: " + (100 - (((game.getPes() >= 2 ? game.getPes() : 2) - 2) * 15) - (game.getDead() * 5)), 332, 100);
 
         if (game.isDebugMode()) {
             g.drawImage(images.humanHealthy, 380, 28 + 22, this);
