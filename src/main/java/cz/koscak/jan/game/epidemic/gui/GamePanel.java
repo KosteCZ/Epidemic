@@ -256,6 +256,8 @@ public class GamePanel extends JPanel {
 		g.setColor(Color.BLACK);
 		g.drawRect(-1, 28/*31*/ /*+ 25*/, 801, 801);
 
+        g.drawString("Chance for protest: " + (100 - (((game.getPes() >= 2 ? game.getPes() : 2) - 2) * 15) - (game.getDead() * 5)), 332, 100);
+
         if (game.isDebugMode()) {
             g.drawImage(images.humanHealthy, 380, 28 + 22, this);
             g.drawImage(images.humanFaceMask, 380, 28 + 22, this);

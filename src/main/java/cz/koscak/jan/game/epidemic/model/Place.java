@@ -6,6 +6,7 @@ public class Place {
     private PlaceType type;
     private Area area;
     private int position;
+    private boolean free = true;
 
     public Place(int x, int y, PlaceType type, Area area, int position) {
         this.x = x;
@@ -41,5 +42,13 @@ public class Place {
 
     public int getPosition() {
         return position;
+    }
+
+    public boolean isFree() {
+        return free;
+    }
+
+    public void setFree(boolean free) {
+        this.free = free;
     }
 }

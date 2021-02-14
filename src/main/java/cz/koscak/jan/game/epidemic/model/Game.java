@@ -14,6 +14,7 @@ public class Game {
     private List<Human> listOfHumans = new ArrayList<>();
     private List<Place> listOfPlaces = new ArrayList<>();
     private List<Virus> listOfViruses = new ArrayList<>();
+    private List<Place> listOfProtestPlaces = new ArrayList<>();
 
     private boolean debugMode = false;
 
@@ -40,6 +41,7 @@ public class Game {
         listOfHumans = new ArrayList<>();
         listOfPlaces = new ArrayList<>();
         listOfViruses = new ArrayList<>();
+        listOfProtestPlaces = new ArrayList<>();
 
         if (!(GameStatus.PLAY.equals(gameStatus) || GameStatus.PAUSED.equals(gameStatus))) {
             gameStatus = GameStatus.PAUSED;
@@ -47,6 +49,21 @@ public class Game {
 
         GameSetup.addHumans(listOfHumans);
         GameSetup.addPlaces(listOfPlaces);
+
+        List<Place> temporaryListOfProtestPlaces = new ArrayList<>();
+        for (Place place: listOfPlaces) {
+            if (PlaceType.PROTEST_PLACE.equals(place.getType())) {
+                temporaryListOfProtestPlaces.add(place);
+            }
+        }
+        for (int i = 0; i < 36; i++) {
+            for (Place place: temporaryListOfProtestPlaces) {
+                if (place.getPosition() == i) {
+                    listOfProtestPlaces.add(place);
+                    break;
+                }
+            }
+        }
 
         Human humanToBeInfectedTopLeft = findHuman(Area.QUADRANT_TOP_LEFT, 13);
         humanToBeInfectedTopLeft.setState(HumanState.INFECTED);
@@ -86,9 +103,9 @@ public class Game {
         if (infectedOrSick - healthyOrImmune > 0) {
             Random random = new Random();
             int randomNumber = random.nextInt(20);
-            System.out.println("DEATH - random number: " + randomNumber);
+            if (debugMode) System.out.println("DEATH - random number: " + randomNumber);
             if (randomNumber == 0) {
-                System.out.println("DEATH - dying, because of number: " + randomNumber);
+                if (debugMode) System.out.println("DEATH - dying, because of number: " + randomNumber);
                 for (Human human: listOfHumans) {
                     if (HumanState.SICK.equals(human.getState())) {
                         human.setState(HumanState.DEAD);
@@ -244,5 +261,9 @@ public class Game {
 
     public int getPes() {
         return pes;
+    }
+
+    public List<Place> getListOfProtestPlaces() {
+        return listOfProtestPlaces;
     }
 }
