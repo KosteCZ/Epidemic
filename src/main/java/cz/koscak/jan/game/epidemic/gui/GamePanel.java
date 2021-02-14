@@ -273,11 +273,27 @@ public class GamePanel extends JPanel {
             g.drawRect(400, 28 + 400, 399, 399);
         }
         if (game.isDebugMode()) {
+            g.drawImage(images.humanHealthy, 370, 225, this);
+            g.drawImage(images.humanInfected, 370, 250, this);
+            g.drawImage(images.humanSick, 370, 275, this);
+            g.drawImage(images.humanImmune, 370, 300, this);
+            g.drawImage(images.humanDead, 370, 325, this);
+
             g.drawImage(images.humanHealthy, 420, 225, this);
+            g.drawImage(images.humanFaceMask, 420, 225, this);
+            g.drawImage(images.humanProtestSign, 420, 225, this);
             g.drawImage(images.humanInfected, 420, 250, this);
+            g.drawImage(images.humanFaceMask, 420, 250, this);
+            g.drawImage(images.humanProtestSign, 420, 250, this);
             g.drawImage(images.humanSick, 420, 275, this);
+            g.drawImage(images.humanFaceMask, 420, 275, this);
+            g.drawImage(images.humanProtestSign, 420, 275, this);
             g.drawImage(images.humanImmune, 420, 300, this);
+            g.drawImage(images.humanFaceMask, 420, 300, this);
+            g.drawImage(images.humanProtestSign, 420, 300, this);
             g.drawImage(images.humanDead, 420, 325, this);
+            g.drawImage(images.humanFaceMask, 420, 325, this);
+            g.drawImage(images.humanProtestSign, 420, 325, this);
         }
 		/*for (Human human: game.getListOfHumans()) {
 			human.paint(g);

@@ -6,7 +6,7 @@ import java.util.Random;
 public class Human {
 
     //private static final int UI_SIZE = 16;
-    private static final int DURATION_OF_INFECTED_STATE = 250;
+    private static final int DURATION_OF_INFECTED_STATE = 500;
     private static final int DURATION_OF_SICK_STATE = 500;
     private static final int DURATION_OF_IMMUNE_STATE = 500;
 
@@ -139,14 +139,18 @@ public class Human {
 
                 int randomNumberFarMovement = random.nextInt(50);
                 if ((randomNumberFarMovement == 0) && (position % 2 == 0) && (position <= 22)) {
-                    if (game.isDebugMode()) System.out.print("SPECIAL MOVE: Human position: " + position + " area: " + area);
-                    if (position % 4 == 0) {
-                        targetArea = game.getAreaForNumber(game.getNumberOfArea(area) - 1);
-                    } else {
-                        targetArea = game.getAreaForNumber(game.getNumberOfArea(area) + 1);
+                    if (game.getPes() < 4 || position == 30 || position == 32) {
+                        if (game.isDebugMode())
+                            System.out.print("SPECIAL MOVE: Human position: " + position + " area: " + area);
+                        if (position % 4 == 0) {
+                            targetArea = game.getAreaForNumber(game.getNumberOfArea(area) - 1);
+                        } else {
+                            targetArea = game.getAreaForNumber(game.getNumberOfArea(area) + 1);
+                        }
+                        targetPosition = 25 + (position / 2);
+                        if (game.isDebugMode())
+                            System.out.println(" , moving to position: " + targetPosition + " in area: " + targetArea);
                     }
-                    targetPosition = 25 + (position / 2);
-                    if (game.isDebugMode()) System.out.println(" , moving to position: " + targetPosition + " in area: " + targetArea);
                 } else {
                     int randomNumber = random.nextInt(4);
                     if (game.isDebugMode()) System.out.print("Random: " + randomNumber + ". ");
@@ -155,10 +159,27 @@ public class Human {
                         targetPlaceType = PlaceType.HOME;
                     } else if (randomNumber == 1) {
                         if (game.isDebugMode()) System.out.println("Going to " + PlaceType.WORK);
-                        targetPlaceType = PlaceType.WORK;
+                        if (game.getPes() >= 1
+                                && (position == 1 || position ==  4 || position ==  5 || position == 20
+                                || position ==  8 || position == 15 || position == 23 || position == 26
+                                || position == 22 || position == 10 || position == 25 || position == 31
+                                || position == 33|| position ==  34 || position == 35 || position == 36)) {
+                            targetPlaceType = PlaceType.HOME;
+                        } else {
+                            targetPlaceType = PlaceType.WORK;
+                        }
                     } else if (randomNumber == 2) {
                         if (game.isDebugMode()) System.out.println("Going to " + PlaceType.SHOP);
-                        targetPlaceType = PlaceType.SHOP;
+                        if (game.getPes() >= 5
+                                && (position == 1 || position ==  4 || position == 8 || position ==  15
+                                || position == 16 || position == 19 || position == 27 || position == 28
+                                || position ==  5 || position == 20 || position == 23 || position == 26
+                                || position ==  3 || position ==  6 || position == 12 || position == 18
+                                || position == 21 || position ==  9 || position == 29 || position == 30)) {
+                            targetPlaceType = PlaceType.HOME;
+                        } else {
+                            targetPlaceType = PlaceType.SHOP;
+                        }
                     } else if (randomNumber == 3) {
                         if (game.isDebugMode()) System.out.println("Going to " + PlaceType.SPORT);
                         targetPlaceType = PlaceType.SPORT;
@@ -228,6 +249,11 @@ public class Human {
     private void produceVirus(long time, List<Virus> listOfViruses) {
         if (HumanState.INFECTED.equals(state) || HumanState.SICK.equals(state)) {
             if (time % 5 == 0) {
+                if (targetPlace == null) {
+                    System.err.println("ERROR: Produce Virus (no target place) - Human Position Setup probably failed for Human: "
+                            + "x:" + getIntX() + ", y:" + getIntY() + ", area:" + area + ", position:" + position
+                            + ", targetPlace:" + targetPlace);
+                }
                 if (moving == false && PlaceType.HOME.equals(targetPlace.getType())) {
                     if (time % 20 == 0) {
                         listOfViruses.add(new Virus(x + Virus.MOUTH_X, y + Virus.MOUTH_Y, Virus.TIME_OF_SPREADING_VERY_LIMITED));

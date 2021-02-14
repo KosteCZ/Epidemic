@@ -39,17 +39,6 @@ public class Game {
             gameStatus = GameStatus.PAUSED;
         }
 
-        if (isDebugMode()) {
-            listOfHumans.add(new Human(370, 250));
-            listOfHumans.get(0).setState(HumanState.INFECTED);
-            listOfHumans.add(new Human(370, 275));
-            listOfHumans.get(1).setState(HumanState.SICK);
-            listOfHumans.add(new Human(370, 300));
-            listOfHumans.get(2).setState(HumanState.IMMUNE);
-            listOfHumans.add(new Human(370, 325));
-            listOfHumans.get(3).setState(HumanState.DEAD);
-        }
-
         GameSetup.addHumans(listOfHumans);
         GameSetup.addPlaces(listOfPlaces);
 
