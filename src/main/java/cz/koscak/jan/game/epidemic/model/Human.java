@@ -22,11 +22,11 @@ public class Human {
     private boolean faceMask = false;
     private boolean protesting = false;
 
-    public Human(double x, double y) {
+    /*public Human(double x, double y) {
         this.x = x;
         this.y = y;
         setState(HumanState.HEALTHY);
-    }
+    }*/
 
     public Human(double x, double y, Area area, int position) {
         this.x = x;
@@ -104,6 +104,7 @@ public class Human {
     }
 
     public void doAction(Game game, long time, List<Virus> listOfViruses) {
+        if (HumanState.DEAD.equals(state)) return;
         changeStateWithTime();
         move(game);
         produceVirus(time, listOfViruses);

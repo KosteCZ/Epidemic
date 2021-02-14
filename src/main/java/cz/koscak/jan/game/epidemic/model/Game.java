@@ -3,6 +3,7 @@ package cz.koscak.jan.game.epidemic.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Random;
 
 public class Game {
 
@@ -20,7 +21,10 @@ public class Game {
 
     private long time = 0;
     private int speed = 2;
+    private int allHumansCount = 100;
+    private int healthyOrImmune = 0;
     private int infectedOrSick = 0;
+    private int dead = 0;
     private int pes = 0; // Epidemic level 0-5
 
     public void newGame() {
@@ -28,6 +32,8 @@ public class Game {
         setDebugMode(false);
 
         time = 0;
+        allHumansCount = 100;
+        healthyOrImmune = 100;
         infectedOrSick = 0;
         pes = 0;
 
@@ -69,9 +75,28 @@ public class Game {
 
         spreadVirusAndRemoveOld();
 
+        virusKills();
+
         updateInfectedOrSickCountAndUpdatePes();
 
         checkVictoryCondition();
+    }
+
+    private void virusKills() {
+        if (infectedOrSick - healthyOrImmune > 0) {
+            Random random = new Random();
+            int randomNumber = random.nextInt(20);
+            System.out.println("DEATH - random number: " + randomNumber);
+            if (randomNumber == 0) {
+                System.out.println("DEATH - dying, because of number: " + randomNumber);
+                for (Human human: listOfHumans) {
+                    if (HumanState.SICK.equals(human.getState())) {
+                        human.setState(HumanState.DEAD);
+                        return;
+                    }
+                }
+            }
+        }
     }
 
     private void spreadVirusAndRemoveOld() {
@@ -84,13 +109,22 @@ public class Game {
     }
 
     private void updateInfectedOrSickCountAndUpdatePes() {
+        int currentlyHealthyOrImmune = 0;
         int currentlyInfectedOrSick = 0;
+        int currentDead = 0;
         for (Human human: listOfHumans) {
             if (HumanState.INFECTED.equals(human.getState()) || HumanState.SICK.equals(human.getState())) {
                 currentlyInfectedOrSick = currentlyInfectedOrSick + 1;
+            } else if (HumanState.HEALTHY.equals(human.getState()) || HumanState.IMMUNE.equals(human.getState())) {
+                currentlyHealthyOrImmune = currentlyHealthyOrImmune + 1;
+            } else if (HumanState.DEAD.equals(human.getState())) {
+                currentDead = currentDead + 1;
             }
+
         }
+        healthyOrImmune = currentlyHealthyOrImmune;
         infectedOrSick = currentlyInfectedOrSick;
+        dead = currentDead;
         if (infectedOrSick <= 10) {
             pes = 0;
         } else if (infectedOrSick <= 20) {
@@ -107,8 +141,12 @@ public class Game {
     }
 
     private void checkVictoryCondition() {
+        if (dead >= 10) {
+            gameStatus = GameStatus.DEFEAT;
+            return;
+        }
         for (Human human: listOfHumans) {
-            if (!HumanState.HEALTHY.equals(human.getState())) return;
+            if (!HumanState.HEALTHY.equals(human.getState()) || !HumanState.DEAD.equals(human.getState())) return;
         }
         gameStatus = GameStatus.VICTORY;
     }
@@ -190,6 +228,18 @@ public class Game {
 
     public int getInfectedOrSick() {
         return infectedOrSick;
+    }
+
+    /*public int getHealthyOrImmune() {
+        return healthyOrImmune;
+    }*/
+
+    public int getAllHumansCount() {
+        return allHumansCount;
+    }
+
+    public int getDead() {
+        return dead;
     }
 
     public int getPes() {
