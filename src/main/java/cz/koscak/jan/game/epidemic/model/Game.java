@@ -142,15 +142,15 @@ public class Game {
         healthyOrImmune = currentlyHealthyOrImmune;
         infectedOrSick = currentlyInfectedOrSick;
         dead = currentDead;
-        if (infectedOrSick <= 10) {
+        if (infectedOrSick < 10) {
             pes = 0;
-        } else if (infectedOrSick <= 20) {
+        } else if (infectedOrSick < 20) {
             pes = 1;
-        } else if (infectedOrSick <= 30) {
+        } else if (infectedOrSick < 30) {
             pes = 2;
-        } else if (infectedOrSick <= 40) {
+        } else if (infectedOrSick < 40) {
             pes = 3;
-        } else if (infectedOrSick <= 50) {
+        } else if (infectedOrSick < 50) {
             pes = 4;
         } else {
             pes = 5;
@@ -163,7 +163,7 @@ public class Game {
             return;
         }
         for (Human human: listOfHumans) {
-            if (!HumanState.HEALTHY.equals(human.getState()) || !HumanState.DEAD.equals(human.getState())) return;
+            if (!(HumanState.HEALTHY.equals(human.getState()) || HumanState.DEAD.equals(human.getState()))) return;
         }
         gameStatus = GameStatus.VICTORY;
     }

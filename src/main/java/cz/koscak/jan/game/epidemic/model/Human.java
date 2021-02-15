@@ -6,9 +6,9 @@ import java.util.Random;
 public class Human {
 
     //private static final int UI_SIZE = 16;
-    private static final int DURATION_OF_INFECTED_STATE = 600;
-    private static final int DURATION_OF_SICK_STATE = 600;
-    private static final int DURATION_OF_IMMUNE_STATE = 600;
+    private static final int DURATION_OF_INFECTED_STATE = 500;
+    private static final int DURATION_OF_SICK_STATE = 500;
+    private static final int DURATION_OF_IMMUNE_STATE = 500;
 
     private double x, y;
     private double vx, vy;
