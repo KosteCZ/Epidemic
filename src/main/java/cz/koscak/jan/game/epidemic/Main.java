@@ -25,7 +25,6 @@ public class Main {
             try {
                 while (true) {
                     gameFrame.repaint();
-                    //game.play();
                     Thread.sleep(50);
                 }
             } catch (InterruptedException exception) {
@@ -37,7 +36,6 @@ public class Main {
         Thread threadGame = new Thread(() -> {
             try {
                 while (true) {
-                    //gameFrame.repaint();
                     game.play();
                     Thread.sleep(game.getSpeedDelay());
                 }

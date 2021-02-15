@@ -5,7 +5,6 @@ import java.util.Random;
 
 public class Human {
 
-    //private static final int UI_SIZE = 16;
     private static final int DURATION_OF_INFECTED_STATE = 500;
     private static final int DURATION_OF_SICK_STATE = 500;
     private static final int DURATION_OF_IMMUNE_STATE = 500;
@@ -21,12 +20,6 @@ public class Human {
     private Place targetPlace;
     private boolean faceMask = false;
     private boolean protesting = false;
-
-    /*public Human(double x, double y) {
-        this.x = x;
-        this.y = y;
-        setState(HumanState.HEALTHY);
-    }*/
 
     public Human(double x, double y, Area area, int position) {
         this.x = x;
@@ -306,40 +299,5 @@ public class Human {
             timeToNextState = DURATION_OF_INFECTED_STATE * 2;
         }
     }
-
-    /*public void paint(Graphics g) {
-        //g.drawRect(getIntX(), getIntY(), UI_SIZE, UI_SIZE);
-        // body
-        printBody(g);
-        g.setColor(Color.RED);
-        g.drawOval(getIntX(), getIntY(), UI_SIZE, UI_SIZE);
-        // eyes
-        g.setColor(Color.black);
-        g.drawOval(getIntX() + 4, getIntY() + 5, 3, 3);
-        g.setColor(Color.black);
-        g.drawOval(getIntX() + 9, getIntY() + 5, 3, 3);
-        // mouth
-        g.setColor(Color.black);
-        g.drawLine(getIntX() + 4, getIntY() + 11, getIntX() + 12, getIntY() + 11);
-        g.setColor(Color.black);
-        g.drawLine(getIntX() + 5, getIntY() + 12, getIntX() + 11, getIntY() + 12);
-        g.setColor(Color.black);
-        g.drawLine(getIntX() + 7, getIntY() + 13, getIntX() + 9, getIntY() + 13);
-    }
-
-    private void printBody(Graphics g) {
-        if (HumanState.HEALTHY.equals(state)) {
-            g.setColor(Color.YELLOW);
-        } else if (HumanState.INFECTED.equals(state)) {
-            g.setColor(Color.CYAN);
-        }if (HumanState.SICK.equals(state)) {
-            g.setColor(Color.GREEN);
-        }if (HumanState.IMMUNE.equals(state)) {
-            g.setColor(Color.ORANGE);
-        }if (HumanState.DEAD.equals(state)) {
-            g.setColor(Color.DARK_GRAY);
-        }
-        g.fillOval(getIntX(), getIntY(), UI_SIZE, UI_SIZE);
-    }*/
 
 }

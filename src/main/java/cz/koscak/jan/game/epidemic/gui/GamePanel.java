@@ -74,11 +74,11 @@ public class GamePanel extends JPanel {
             Adjustable source = event.getAdjustable();
             if (event.getValueIsAdjusting()) {
                 game.setSpeed(source.getValue());
-                //System.out.println("New scrollbar speed value: " + source.getValue());
+                if (game.isDebugMode()) System.out.println("New scrollbar speed value: " + source.getValue());
                 return;
             }
             game.setSpeed(source.getValue());
-            //System.out.println("New scrollbar speed value: " + source.getValue());
+            if (game.isDebugMode()) System.out.println("New scrollbar speed value: " + source.getValue());
         };
 
         scrollBarSpeedOfGame.addAdjustmentListener(listener);
@@ -90,7 +90,6 @@ public class GamePanel extends JPanel {
         buttonNewGame.setBounds(BUTTON_NEW_GAME_POSITION_X, 1, 100, 28);
 
         buttonNewGame.addActionListener(event -> {
-            //game.setGameStatus();
             buttonPause.setEnabled(true);
             game.newGame();
         });
